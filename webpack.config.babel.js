@@ -39,6 +39,15 @@ const config = {
         },
       },
       {
+        test: /\.csv$/,
+        loader: 'csv-loader',
+        options: {
+          dynamicTyping: true,
+          header: true,
+          skipEmptyLines: true
+        }
+      },
+      {
         test:/(\.scss$|.css$)/,
         include: path.join(__dirname, 'src','sass'),
         exclude: /node_modules/,

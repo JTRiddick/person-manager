@@ -6,6 +6,9 @@ import Index from './Index';
 import Layout from './Layout';
 import NotFoundPage from './NotFound';
 
+import PersonInfo from './PersonInfo';
+// import ManageData from './ManageData';
+
 export class Routes extends React.Component {
 
   render(){
@@ -13,6 +16,7 @@ export class Routes extends React.Component {
     return(
         <Layout>
           <Switch>
+            <Route exact path="/PersonInfo" component={PersonInfo}/>
             <Route exact path="/" component={Index}/>
             <Route component={NotFoundPage} />
           </Switch>

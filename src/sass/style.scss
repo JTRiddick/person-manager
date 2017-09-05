@@ -1,4 +1,8 @@
-#index{
-  
-  font-family:monospace;
+@import "palette.scss";
+@import "mixins.scss";
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+.index-header{
+
+  font-family:'Roboto',cursive,sans-serif;
 }
