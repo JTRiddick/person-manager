@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {csv} from 'd3-request';
 import _ from 'lodash';
 import {Panel} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 import { getAll } from '../actions';
 
@@ -36,9 +37,9 @@ class PersonIndex extends Component {
     return _.map(this.props.peopleList, person => {
       return(
         <li className="list-group-item" key={person['ID']}>
-          <p>
+          <Link to={`/show/${person.ID}`}>
             {person['ID']}
-          </p>
+          </Link>
           <div>
             <h6>
               <em>{person['First Name']}</em>
@@ -77,20 +78,29 @@ class PersonIndex extends Component {
   render() {
     console.log('person index state at render ',this.state);
     console.log('person index props @ render ',this.props);
-    return (
-      <div id={style.CSVload}>
-        <h1>Hi, I'm working now</h1>
-        <div>
-          <ul>
-            {this.generateList()}
-          </ul>
+    if(this.props.peopleList){
+      return (
+        <div id={style.CSVload}>
+          <h1>Hi, I'm working now</h1>
+          <div>
+            <ul>
+              {this.generateList()}
+            </ul>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }else{
+      return (
+        <Panel header="There's a Problem!" bsStyle="warning">
+          <p>Loading...</p>
+        </Panel>
+      )
+    }
+
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state,ownProps){
   return {
     peopleList:state.people
   };
