@@ -6,7 +6,7 @@ export const LOAD_CSV = 'LOAD_CSV';
 
 import csv from '../public/data/Employees.csv';
 
-export function getAll(csv) {
+export function getAll() {
   // const request = axios.get(`${ROOT_URL}/api/posts${API_KEY}`);
   return {
     type: GET_MASTER_LIST,
