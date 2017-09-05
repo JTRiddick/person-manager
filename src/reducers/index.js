@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import peopleReducer from './people_reducer';
 
 
 const initialState = {
@@ -7,7 +8,7 @@ const initialState = {
 
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  people: peopleReducer
 
 });
 

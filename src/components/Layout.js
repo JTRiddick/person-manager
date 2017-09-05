@@ -13,8 +13,11 @@ export const Layout = props => {
               <LinkContainer to="/">
                 <NavItem>Home</NavItem>
               </LinkContainer>
-              <LinkContainer to="/PersonInfo">
-                <NavItem>View Personnel Data</NavItem>
+              <LinkContainer to="/PersonIndex">
+                <NavItem>View All Data</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/FilterList">
+                <NavItem>Search/Filter</NavItem>
               </LinkContainer>
               <LinkContainer to="/Data">
                 <NavItem>Manage Data</NavItem>

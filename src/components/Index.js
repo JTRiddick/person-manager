@@ -7,7 +7,7 @@ export default class Index extends Component {
   render() {
     return (
       <div id={style.Index}>
-        <h1>Hi, I'm working now</h1>
+        <h1>HR Demense Portal</h1>
       </div>
     );
   }
