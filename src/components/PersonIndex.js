@@ -18,13 +18,18 @@ class PersonIndex extends Component {
   }
 
   componentWillMount(){
-    this.props.getPage(state.props.firstItem,state.props.lastItem);
+    this.setState = {
+      firstItem:this.props.firstItem,
+      lastItem:this.props.lastItem
+    }
+
   }
 
   componentDidMount(){
     if(!this.props.peopleList){
       this.setState({loadError:true})
     }
+    this.props.getPage(this.state.firstItem,this.state.lastItem);
   }
 
   generateList(){

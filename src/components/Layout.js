@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter, NavLink, Route } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import  PageControls  from './PageControls';
 
 export const Layout = props => {
   return(
@@ -29,6 +30,9 @@ export const Layout = props => {
       <div className="app-content">
         {props.children}
       </div>
+      <section className="page-controls">
+        <PageControls />
+      </section>
       <footer>
 
       </footer>
