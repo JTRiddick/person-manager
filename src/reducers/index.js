@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import peopleReducer from './people_reducer';
-
+import uiReducer from './ui_reducer';
 
 const initialState = {
   // initial state object
@@ -8,8 +8,8 @@ const initialState = {
 
 
 const rootReducer = combineReducers({
-  people: peopleReducer
-
+  people: peopleReducer,
+  ui: uiReducer
 });
 
 export default rootReducer;

@@ -18,7 +18,7 @@ class PersonIndex extends Component {
   }
 
   componentWillMount(){
-    this.props.getPage(0,10);
+    this.props.getPage(state.props.firstItem,state.props.lastItem);
   }
 
   componentDidMount(){
@@ -76,8 +76,8 @@ class PersonIndex extends Component {
 
 
   render() {
-    console.log('person index state at render ',this.state);
-    console.log('person index props @ render ',this.props);
+    // console.log('person index state at render ',this.state);
+    // console.log('person index props @ render ',this.props);
     if(this.props.peopleList){
       return (
         <div id={style.CSVload}>
@@ -102,7 +102,10 @@ class PersonIndex extends Component {
 
 function mapStateToProps(state,ownProps){
   return {
-    peopleList:state.people
+    peopleList:state.people,
+    firstItem:state.ui.firstItem,
+    lastItem:state.ui.lastItem,
+    sortBy:state.ui.sortBy
   };
 }
 

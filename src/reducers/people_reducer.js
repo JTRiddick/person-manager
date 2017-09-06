@@ -10,6 +10,8 @@ export default function(state = {},action){
       const people = _.mapKeys(action.payload,'ID');
       return Object.assign({},state,people);
     case GET_PAGED_LIST:
+      //use reducer to take a range of rows from JSON data
+      //displaying whole list at once slows browser considerably
       const paged = _.reduce(action.payload.csv,(res,val,key)=>{
         if(key >= action.payload.start && key < action.payload.end){
           res[key] = val;
