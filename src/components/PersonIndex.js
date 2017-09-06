@@ -5,7 +5,7 @@ import _ from 'lodash';
 import {Panel} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
-import { getAll } from '../actions';
+import { getAll, getPage } from '../actions';
 
 import style from '../sass/style.scss';
 
@@ -18,7 +18,7 @@ class PersonIndex extends Component {
   }
 
   componentWillMount(){
-    this.props.getAll();
+    this.props.getPage(0,10);
   }
 
   componentDidMount(){
@@ -81,7 +81,7 @@ class PersonIndex extends Component {
     if(this.props.peopleList){
       return (
         <div id={style.CSVload}>
-          <h1>Hi, I'm working now</h1>
+          <h1>Showing Everybody</h1>
           <div>
             <ul>
               {this.generateList()}
@@ -106,4 +106,4 @@ function mapStateToProps(state,ownProps){
   };
 }
 
-export default connect(mapStateToProps,{getAll})(PersonIndex)
+export default connect(mapStateToProps,{getAll,getPage})(PersonIndex)
