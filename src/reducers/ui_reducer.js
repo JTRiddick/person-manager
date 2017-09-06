@@ -1,8 +1,7 @@
 import _ from 'lodash';
 
 import {
-  MIN_PAGE,
-  MAX_PAGE,
+  SET_RANGE,
   TOGGLE_COL,
   SORT_LIST
 } from '../actions';
@@ -10,8 +9,8 @@ import {
 const initialState = {
   // initial state object
   firstItem:0,
-  lastItem:20,
-  resultsPerPage:20,
+  lastItem:9,
+  resultsPerPage:10,
   showColumns:['ID','First Name','Last Name','Email','Address','City','State',
     'Job','SSN','C_Number'],
   sortBy:[]
@@ -19,11 +18,12 @@ const initialState = {
 
 const uiReducer = (state=initialState,action={}) => {
   switch (action.type) {
-    case MIN_PAGE:
-      return Object.assign({},state,{firstItem:action.payload});
-    case MAX_PAGE:
-      console.log('action max page ', action.payload);
-      return Object.assign({},state,{lastItem:action.payload});
+    case SET_RANGE:
+      console.log('new page range ...', action.payload.min,action.payload.max);
+      return Object.assign({},state,{
+        firstItem:action.payload.min,
+        lastItem:action.payload.max
+      });
     default:
       return state;
 

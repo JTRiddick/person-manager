@@ -13,13 +13,11 @@ import SingleView from './SingleView';
 export class Routes extends React.Component {
 
   render(){
-      console.log('routes props :', this.props)
     return(
         <Layout>
           <Switch>
-            <Route exact path="/PersonIndex" component={PersonIndex}/>
+            <Route exact path="/" component={PersonIndex}/>
             <Route exact path="/show/:id" component={SingleView}/>
-            <Route exact path="/" component={Index}/>
             <Route component={NotFoundPage} />
           </Switch>
         </Layout>

@@ -13,7 +13,8 @@ export default function(state = {},action){
       //use reducer to take a range of rows from JSON data
       //displaying whole list at once slows browser considerably
       const paged = _.reduce(action.payload.csv,(res,val,key)=>{
-        if(key >= action.payload.start && key < action.payload.end){
+        console.log('list reducer key val', key, val);
+        if(key > action.payload.start && key <= action.payload.end){
           res[key] = val;
         }
         return res;

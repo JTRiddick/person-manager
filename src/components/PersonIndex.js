@@ -5,6 +5,8 @@ import _ from 'lodash';
 import {Panel} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
+import  PageControls  from './PageControls';
+
 import { getAll, getPage } from '../actions';
 
 import style from '../sass/style.scss';
@@ -17,19 +19,22 @@ class PersonIndex extends Component {
     this.state = {};
   }
 
-  componentWillMount(){
-    this.setState = {
-      firstItem:this.props.firstItem,
-      lastItem:this.props.lastItem
-    }
-
-  }
-
   componentDidMount(){
     if(!this.props.peopleList){
       this.setState({loadError:true})
     }
-    this.props.getPage(this.state.firstItem,this.state.lastItem);
+    this.props.getPage(this.props.firstItem,this.props.lastItem);
+  }
+
+  componentWillReceiveProps(nextProps){
+    console.log('next props ',nextProps);
+    this.setState({
+      firstItem:nextProps.firstItem,
+      lastItem:nextProps.lastItem
+    });
+    if(nextProps.firstItem !== this.state.firstItem && nextProps.lastItem !== this.state.lastItem){
+      this.props.getPage(this.state.firstItem,this.state.lastItem);
+    }
   }
 
   generateList(){
@@ -92,6 +97,7 @@ class PersonIndex extends Component {
               {this.generateList()}
             </ul>
           </div>
+
         </div>
       );
     }else{

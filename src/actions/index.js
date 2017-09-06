@@ -6,8 +6,7 @@ export const GET_FILTERED_LIST = 'GET_FILTERED_LIST';
 export const SORT_LIST = 'SORT_LIST';
 export const GET_INDIVIDUAL = 'GET_INDIVIDUAL';
 export const LOAD_CSV = 'LOAD_CSV';
-export const MIN_PAGE = 'MIN_PAGE';
-export const MAX_PAGE = 'MAX_PAGE';
+export const SET_RANGE = 'SET_RANGE';
 export const TOGGLE_COL = 'TOGGLE_COL';
 
 import csv from '../public/data/Employees.csv';
@@ -37,16 +36,9 @@ export function filterList(attributes=[]){
 
 }
 
-export function changeMax(max){
+export function setRange(min,max){
   return{
-    type: MAX_PAGE,
-    payload: max
-  }
-}
-
-export function changeMin(min){
-  return{
-    type: MIN_PAGE,
-    payload: min
+    type: SET_RANGE,
+    payload: {min,max}
   }
 }

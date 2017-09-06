@@ -2,7 +2,8 @@ import React from 'react';
 import { Link, withRouter, NavLink, Route } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import  PageControls  from './PageControls';
+
+import PageControls from './PageControls';
 
 export const Layout = props => {
   return(
@@ -12,9 +13,6 @@ export const Layout = props => {
           <Navbar>
             <Nav>
               <LinkContainer to="/">
-                <NavItem>Home</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/PersonIndex">
                 <NavItem>View All Data</NavItem>
               </LinkContainer>
               <LinkContainer to="/FilterList">

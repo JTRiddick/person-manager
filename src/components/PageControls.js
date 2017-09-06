@@ -5,41 +5,41 @@ import
 from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
-import { changeMax, changeMin } from '../actions';
+import { setRange } from '../actions';
 
 import style from '../sass/style.scss';
 
 class PageControls extends Component {
   constructor(props){
     super(props);
-    this.state = { showing:[0,9], resultsPerPage:10}
+    this.state = { showing:[0,10], resultsPerPage:10}
   }
 
-  componentWillMount(){
+  componentWillReceiveProps(nextProps){
+    console.log('controls got props ',nextProps);
     this.setState({
-      showing:[this.props.firstItem,this.props.lastItem],
-      resultsPerPage:this.props.resultsPerPage
+      showing:[nextProps.firstItem,nextProps.lastItem]
     })
   }
 
-  setRange(min,max){
-    this.props.changeMin(min);
-    this.props.changeMax(max);
-  }
-
   onClick = value => {
-    console.log('onchange called ', value);
+
+    let min = this.state.showing[0];
+    let max = this.state.showing[1];
+    let newMin;
+    let newMax;
+    console.log('onclick called with ', value, 'min',min,'max',max);
     switch (value) {
       case 'min':
         //lower page
-        let newMin;
-        this.state.showing[0] > 0 ? newMin -= this.state.resultsPerPage : newMin = 0;
-        this.setState({showing:[newMin,newMin - this.state.resultsPerPage]})
-        return this.setRange(this.state.showing[0],this.state.showing[1]);
+        let newMin = min - this.state.resultsPerPage;
+        min >= 0 ? newMin : newMin = 0;
+        console.log('new min ',newMin);
+        return this.props.setRange(newMin,newMin + this.state.resultsPerPage);
       case 'max':
-        let newMax = this.state.showing[1] + this.state.resultsPerPage;
-        this.setState({showing:[newMax-this.state.resultsPerPage,newMax]});
-        return this.setRange(this.state.showing[0],this.state.showing[1]);
+        let newMax = max + this.state.resultsPerPage;
+        console.log('new max ',newMax);
+        return this.props.setRange(max,newMax);
       default:
         break;
     }
@@ -52,11 +52,11 @@ class PageControls extends Component {
         <Clearfix>
           <ButtonToolbar>
             <ButtonGroup>
-              <Button onClick={()=>this.onClick('min')}>Previous</Button>
+              <Button onClick={()=>{this.onClick('min')}}>Previous</Button>
               <Button value={2}>
                 Showing: {this.state.showing[0]} - {this.state.showing[1]}
               </Button>
-              <Button onClick={()=>this.onClick('max')}>Next</Button>
+              <Button onClick={()=>{this.onClick('max')}}>Next</Button>
             </ButtonGroup>
           </ButtonToolbar>
         </Clearfix>
@@ -75,4 +75,4 @@ function mapStateToProps(state,ownProps){
   }
 }
 
-export default connect(mapStateToProps,{changeMax,changeMin})(PageControls)
+export default connect(mapStateToProps,{setRange})(PageControls)
