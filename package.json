@@ -9,7 +9,8 @@
     "build": "NODE_ENV=production webpack -p",
     "build:dev": "webpack -d",
     "build:dev:watch": "webpack -d --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:heroku":"heroku config:set BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi && npm run start"
   },
   "repository": {
     "type": "git",
