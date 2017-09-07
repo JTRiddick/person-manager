@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {csv} from 'd3-request';
 import _ from 'lodash';
-import {Panel} from 'react-bootstrap';
+import {Panel, Grid, Row, Col, Clearfix} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 import  PageControls  from './PageControls';
