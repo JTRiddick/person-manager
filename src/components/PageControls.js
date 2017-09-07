@@ -12,7 +12,7 @@ import style from '../sass/style.scss';
 class PageControls extends Component {
   constructor(props){
     super(props);
-    this.state = { showing:[0,10], resultsPerPage:10}
+    this.state = { showing:[0,9], resultsPerPage:10}
   }
 
   componentWillReceiveProps(nextProps){
@@ -33,7 +33,7 @@ class PageControls extends Component {
       case 'min':
         //lower page
         let newMin = min - this.state.resultsPerPage;
-        min >= 0 ? newMin : newMin = 0;
+        (min > 0) ? newMin : newMin = 0;
         console.log('new min ',newMin);
         return this.props.setRange(newMin,newMin + this.state.resultsPerPage);
       case 'max':

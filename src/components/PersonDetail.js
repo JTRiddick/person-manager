@@ -6,51 +6,53 @@ from 'react-bootstrap';
 import style from '../sass/style.scss';
 
 
-export const Name = props => {
+const Name = props => {
   return(
     <div>
       <h5>
-        <em>{props['First Name']}</em>
+        <em>{props.person['First Name']}</em>
       </h5>
       <h4>
-        <b>{props['Last Name']}</b>
+        <b>{props.person['Last Name']}</b>
       </h4>
       <h4>
-        {props['Job']}
+        {props.person['Job']}
       </h4>
     </div>
   )
 }
 
-export const Contact = props => {
+const Contact = props => {
   return(
     <div>
-      <p>{props['Email']}</p>
-      <p>{props['C_Number']}</p>
+      <p>{props.person['Email']}</p>
+      <p>{props.person['C_Number']}</p>
     </div>
   )
 }
 
-export const Location = props => {
+const Location = props => {
   return(
     <div>
       <p>
-        {props['Address']}
+        {props.person['Address']}
       </p>
       <p>
-        {props['City']}
+        {props.person['City']}
       </p>
       <p>
-        {props['State']}
+        {props.person['State']}
       </p>
     </div>
   )
 }
 
-export const Secret = props => {
+const Secret = props => {
   return (
     <div>
-      <p>{props['SSN']}</p>
+      <p>{props.person['SSN']}</p>
     </div>
   )
 }
+
+export {Name,Contact,Location,Secret}
