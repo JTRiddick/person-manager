@@ -27,7 +27,33 @@ class SingleView extends Component{
     if (person){
       return (
         <div id={style.singleview}>
-          <h1>{person['First Name']}</h1>
+          <h1>{person['ID']}</h1>
+          <div>
+            <h6>
+              <em>{person['First Name']}</em>
+            </h6>
+            <h5>
+              <b>{person['Last Name']}</b>
+            </h5>
+            <h4>
+              {person['Job']}
+            </h4>
+          </div>
+          <div>
+            <p>{person['Email']}</p>
+            <p>{person['C_Number']}</p>
+          </div>
+          <div>
+            <p>
+              {person['Address']}
+            </p>
+            <p>
+              {person['City']}
+            </p>
+            <p>
+              {person['State']}
+            </p>
+          </div>
         </div>
       );
     } else {

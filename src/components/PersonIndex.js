@@ -6,6 +6,7 @@ import {Panel, Grid, Row, Col, Clearfix} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 import  PageControls  from './PageControls';
+import { Name, Contact, Location } from './PersonDetail';
 
 import { getAll, getPage } from '../actions';
 
@@ -50,35 +51,9 @@ class PersonIndex extends Component {
           <Link to={`/show/${person.ID}`}>
             {person['ID']}
           </Link>
-          <div>
-            <h6>
-              <em>{person['First Name']}</em>
-            </h6>
-            <h5>
-              <b>{person['Last Name']}</b>
-            </h5>
-            <h4>
-              {person['Job']}
-            </h4>
-          </div>
-          <div>
-            <p>{person['Email']}</p>
-            <p>{person['C_Number']}</p>
-          </div>
-          <div>
-            <p>
-              {person['Address']}
-            </p>
-            <p>
-              {person['City']}
-            </p>
-            <p>
-              {person['State']}
-            </p>
-          </div>
-          <div>
-            <p>{person['SSN']}</p>
-          </div>
+          <Name person={person}/>
+          <Contact person={person}/>
+          <Location person={person}/>
         </li>
       )});
     }

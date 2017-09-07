@@ -18,7 +18,7 @@ export function getAll() {
   };
 }
 
-export function getPage(start=0,end=25){
+export function getPage(start,end){
   return{
     type: GET_PAGED_LIST,
     payload: {csv,start,end}
