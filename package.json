@@ -4,7 +4,7 @@
   "description": "HR viewer",
   "main": "server.js",
   "scripts": {
-    "start": "npm run build && node server/run-server.js",
+    "start": "npm run build && node ./server/run-server.js",
     "start:dev": "export NODE_ENV=development && npm run build:dev && nodemon --exec node -- server/run-server.js",
     "build": "NODE_ENV=production webpack -p",
     "build:dev": "webpack -d",

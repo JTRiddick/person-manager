@@ -12,7 +12,7 @@ import style from '../sass/style.scss';
 class PageControls extends Component {
   constructor(props){
     super(props);
-    this.state = { showing:[0,9], resultsPerPage:10}
+    this.state = { showing:[0,10], resultsPerPage:10}
   }
 
   componentWillReceiveProps(nextProps){

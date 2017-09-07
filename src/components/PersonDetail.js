@@ -10,11 +10,9 @@ const Name = props => {
   return(
     <Col md={4}>
       <div>
-        <h5>
-          <em>{props.person['First Name']}</em>
-        </h5>
         <h4>
-          <b>{props.person['Last Name']}</b>
+          <b>{props.person['Last Name']} </b>,
+          <em>{props.person['First Name']}</em>
         </h4>
         <h4>
           {props.person['Job']}

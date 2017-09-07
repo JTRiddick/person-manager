@@ -12,12 +12,15 @@
   }
   .main-row{
     outline: 2px solid darkgray;
-    padding:4px;
+    padding:0 0 4px 0;
     margin-bottom:2px;
   }
   .column-header{
-    color: #F7F9F9;
     background-color: #1A5276;
+    a,a:visited{
+      color: #F7F9F9;
+      padding-left: 2px;
+    }
   }
 
 }
