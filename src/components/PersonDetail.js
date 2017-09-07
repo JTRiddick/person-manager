@@ -35,7 +35,7 @@ class PersonDetail extends Component{
         <Row className={`${this.state.rowStatus}`}>
           <div className="column-header">
             <Link to={`/show/${person.ID}`}>
-              {person['ID']}
+              {person['Last Name']}, {person['First Name']} ID: {person['ID']}
             </Link>
             <Button onClick={()=>this.toggleRow()} bsSize="xs">
               <Glyphicon glyph={(this.state.rowStatus == 'main-row')?"minus":"plus"}/>
@@ -59,8 +59,8 @@ const Name = props => {
     <Col md={4}>
       <div>
         <h4>
-          <b>{props.person['Last Name']}, </b>
-          <em> {props.person['First Name']}</em>
+          {props.person['First Name']}
+          <b> {props.person['Last Name']}</b>
         </h4>
         <h4>
           {props.person['Job']}
@@ -71,17 +71,19 @@ const Name = props => {
 }
 
 const Contact = props => {
+
   return(
-    <Col md={4}>
-      <p>{props.person['Email']}</p>
-      <p>{props.person['C_Number']}</p>
+    <Col md={4} className="contact-detail">
+      <p>Email: {props.person['Email']}</p>
+      <p>C Number: {props.person['C_Number']}</p>
     </Col>
   )
 }
 
 const Location = props => {
   return(
-    <Col md={4}>
+    <Col md={4} className="address-detail">
+      <h4>Home Address:</h4>
       <p>
         {props.person['Address']}
       </p>

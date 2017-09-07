@@ -33,7 +33,7 @@ export function getOne(id){
   }
 }
 
-export function filterList(attributes=[]){
+export function filterList(attributes){
 
 }
 

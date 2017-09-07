@@ -26,11 +26,19 @@
       color: #F7F9F9;
       padding-left: 2px;
     }
+    button{
+      float:right;
+      clear:none;
+    }
+  }
+  .contact-detail{
+    padding-top:0.75em;
+  }
 
-  }
-  button{
-    float:right;
-    clear:none;
-  }
+  .address-detail{
+    p{
+      line-height: 0.5;
+    }
+  };
 
 }

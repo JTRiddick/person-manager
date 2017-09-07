@@ -17,7 +17,12 @@
   .column-header a, .column-header a:visited, .column-header a:hover, .column-header a:active {
     color: #F7F9F9;
     padding-left: 2px; }
+  .column-header button {
+    float: right;
+    clear: none; }
 
-button {
-  float: right;
-  clear: none; }
+.contact-detail {
+  padding-top: 0.75em; }
+
+.address-detail p {
+  line-height: 0.5; }

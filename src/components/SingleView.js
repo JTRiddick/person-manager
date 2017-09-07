@@ -28,14 +28,11 @@ class SingleView extends Component{
     if (person){
       return (
         <Panel id={style.singleview}>
-          <h2>{person['ID']}</h2>
+          <h4>{person['ID']}</h4>
           <div>
-            <h6>
-              <em>{person['First Name']}</em>
-            </h6>
-            <h5>
-              <b>{person['Last Name']}</b>
-            </h5>
+            <h3>
+              <b>{person['First Name']} {person['Last Name']}</b>
+            </h3>
             <h4>
               {person['Job']}
             </h4>
