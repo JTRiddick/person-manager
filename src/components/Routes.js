@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch, Router, browserHistory } from 'react-router-dom';
 
-import Index from './Index';
 import Layout from './Layout';
 import NotFoundPage from './NotFound';
 
 import PersonIndex from './PersonIndex';
 import SingleView from './SingleView';
+import SearchFilter from './SearchFilter'
 // import ManageData from './ManageData';
 
 export class Routes extends React.Component {

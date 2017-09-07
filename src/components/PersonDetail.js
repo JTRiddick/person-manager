@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import
-  {Panel,Clearfix,Grid,Row,Col}
+  {Panel,Clearfix,Grid,Row,Col,Button,Glyphicon}
 from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
@@ -14,6 +14,12 @@ class PersonDetail extends Component{
       rowStatus:'main-row',
       secret:'hidden'
     }
+  }
+
+  toggleRow(){
+    (this.state.rowStatus == 'main-row') ?
+      this.setState({rowStatus:'hidden-row'}) :
+      this.setState({rowStatus:'main-row'});
   }
 
   render(){
@@ -31,11 +37,16 @@ class PersonDetail extends Component{
             <Link to={`/show/${person.ID}`}>
               {person['ID']}
             </Link>
+            <Button onClick={()=>this.toggleRow()} bsSize="xs">
+              <Glyphicon glyph={(this.state.rowStatus == 'main-row')?"minus":"plus"}/>
+            </Button>
           </div>
-          <Name person={person}/>
-          <Contact person={person}/>
-          <Location person={person}/>
-          <Secret person={person} status={this.state.secret}/>
+          <div className="row-detail">
+            <Name person={person}/>
+            <Contact person={person}/>
+            <Location person={person}/>
+            <Secret person={person} status={this.state.secret}/>
+          </div>
         </Row>
       )
     }
@@ -48,8 +59,8 @@ const Name = props => {
     <Col md={4}>
       <div>
         <h4>
-          <b>{props.person['Last Name']} </b>,
-          <em>{props.person['First Name']}</em>
+          <b>{props.person['Last Name']}, </b>
+          <em> {props.person['First Name']}</em>
         </h4>
         <h4>
           {props.person['Job']}

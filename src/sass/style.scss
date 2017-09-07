@@ -13,12 +13,24 @@
     padding:0 0 4px 0;
     margin-bottom:2px;
   }
+  .hidden-row{
+    outline: 2px solid darkgray;
+    .row-detail{
+      display: none;
+    }
+  }
   .column-header{
     background-color: #1A5276;
+    padding:3px;
     a,a:visited,a:hover,a:active{
       color: #F7F9F9;
       padding-left: 2px;
     }
+
+  }
+  button{
+    float:right;
+    clear:none;
   }
 
 }

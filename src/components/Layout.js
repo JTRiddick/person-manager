@@ -18,7 +18,7 @@ export const Layout = props => {
               <LinkContainer to="/">
                 <NavItem>View All Data</NavItem>
               </LinkContainer>
-              <LinkContainer to="/FilterList">
+              <LinkContainer to="/SearchFilter">
                 <NavItem>Search/Filter</NavItem>
               </LinkContainer>
               <LinkContainer to="/Data">

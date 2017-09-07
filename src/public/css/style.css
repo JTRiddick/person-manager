@@ -6,8 +6,18 @@
   padding: 0 0 4px 0;
   margin-bottom: 2px; }
 
+.hidden-row {
+  outline: 2px solid darkgray; }
+  .hidden-row .row-detail {
+    display: none; }
+
 .column-header {
-  background-color: #1A5276; }
+  background-color: #1A5276;
+  padding: 3px; }
   .column-header a, .column-header a:visited, .column-header a:hover, .column-header a:active {
     color: #F7F9F9;
     padding-left: 2px; }
+
+button {
+  float: right;
+  clear: none; }
