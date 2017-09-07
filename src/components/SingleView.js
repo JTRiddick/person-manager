@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Panel } from 'react-bootstrap';
+import
+  {Panel,Clearfix,ButtonToolbar,ButtonGroup,Button} from 'react-bootstrap';
 import { getOne } from '../actions';
 
 import style from '../sass/style.scss';
@@ -27,7 +28,7 @@ class SingleView extends Component{
     if (person){
       return (
         <div id={style.singleview}>
-          <h1>{person['ID']}</h1>
+          <h2>{person['ID']}</h2>
           <div>
             <h6>
               <em>{person['First Name']}</em>

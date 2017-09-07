@@ -1,6 +1,6 @@
 import React from 'react';
 import
-  {Panel,Clearfix,ButtonToolbar,ButtonGroup,Button}
+  {Panel,Clearfix,Col}
 from 'react-bootstrap';
 
 import style from '../sass/style.scss';
@@ -8,32 +8,34 @@ import style from '../sass/style.scss';
 
 const Name = props => {
   return(
-    <div>
-      <h5>
-        <em>{props.person['First Name']}</em>
-      </h5>
-      <h4>
-        <b>{props.person['Last Name']}</b>
-      </h4>
-      <h4>
-        {props.person['Job']}
-      </h4>
-    </div>
+    <Col md={4}>
+      <div>
+        <h5>
+          <em>{props.person['First Name']}</em>
+        </h5>
+        <h4>
+          <b>{props.person['Last Name']}</b>
+        </h4>
+        <h4>
+          {props.person['Job']}
+        </h4>
+      </div>
+    </Col>
   )
 }
 
 const Contact = props => {
   return(
-    <div>
+    <Col md={4}>
       <p>{props.person['Email']}</p>
       <p>{props.person['C_Number']}</p>
-    </div>
+    </Col>
   )
 }
 
 const Location = props => {
   return(
-    <div>
+    <Col md={4}>
       <p>
         {props.person['Address']}
       </p>
@@ -43,7 +45,7 @@ const Location = props => {
       <p>
         {props.person['State']}
       </p>
-    </div>
+    </Col>
   )
 }
 

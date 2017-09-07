@@ -2,7 +2,22 @@
 @import "mixins.scss";
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
-.index-header{
+:global{
 
-  font-family:'Roboto',cursive,sans-serif;
+  .app-container{
+    font-family: 'Roboto',sans-serif;
+  }
+  .index-header{
+
+  }
+  .main-row{
+    outline: 2px solid darkgray;
+    padding:4px;
+    margin-bottom:2px;
+  }
+  .column-header{
+    color: #F7F9F9;
+    background-color: #1A5276;
+  }
+
 }

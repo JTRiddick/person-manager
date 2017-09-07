@@ -47,14 +47,16 @@ class PersonIndex extends Component {
   </div>)}else{
     return _.map(this.props.peopleList, person => {
       return(
-        <li className="list-group-item" key={person['ID']}>
-          <Link to={`/show/${person.ID}`}>
-            {person['ID']}
-          </Link>
+        <Row className="main-row" key={person['ID']}>
+          <div className="column-header">
+            <Link to={`/show/${person.ID}`}>
+              {person['ID']}
+            </Link>
+          </div>
           <Name person={person}/>
           <Contact person={person}/>
           <Location person={person}/>
-        </li>
+        </Row>
       )});
     }
   }
@@ -68,9 +70,9 @@ class PersonIndex extends Component {
         <div id={style.CSVload}>
           <h1>Showing Everybody</h1>
           <div>
-            <ul>
+            <Grid>
               {this.generateList()}
-            </ul>
+            </Grid>
           </div>
 
         </div>
