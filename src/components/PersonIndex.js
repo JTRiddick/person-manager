@@ -18,41 +18,39 @@ class PersonIndex extends Component {
   constructor(props){
     super(props);
     this.state = {
-      expandRow:'main-row'
+      expandRow:'main-row',
+      loadError:true,
+      currentRange:{min:0,max:9}
     };
   }
 
   componentWillMount(){
-    this.setState({
-      firstItem:this.props.firstItem || 0,
-      lastItem:this.props.lastItem || 9
-    })
+    console.log('index will mount');
+
   }
 
   componentDidMount(){
-    if(!this.props.peopleList || this.props.peopleList=={ }){
+    console.log('index did mount');
+    if(!this.props.peopleList || this.props.peopleList=={}){
+      console.log('index will mount shows no people list');
       this.setState({loadError:true})
+    }else{
+      this.setState({
+        loadError:false,
+      })
     }
-    this.props.getPage(this.state.firstItem,this.state.lastItem);
   }
 
-  componentWillReceiveProps(nextProps){
-    console.log('index next props ',nextProps);
-    this.setState({
-      firstItem:nextProps.firstItem,
-      lastItem:nextProps.lastItem
-    });
-
-  }
 
   generateList(people){
     console.log('generating list ',people);
     if (people === {}) {
+      this.setState({loadError:true})
     return (<div className={`container ${style.denied}`}>
       <Panel header="There's a Problem!" bsStyle="danger">
         <p>No People Found</p>
       </Panel>
-  </div>)}else{
+    </div>)}else{
     return _.map(people, person => {
       return(
         <PersonDetail person={person}  key={person['ID']}/>
@@ -63,26 +61,18 @@ class PersonIndex extends Component {
 
   render() {
     console.log('person index state at render ',this.state);
-    console.log('person index props @ render ',this.props.peopleList);
-    if(this.props.peopleList != {} && !this.state.loadError){
-      return (
-        <div id={style.CSVload}>
-          <h1>Showing Everybody</h1>
-          <div>
-            <Grid>
-              {this.generateList(this.props.peopleList)}
-            </Grid>
-          </div>
-        </div>
-      );
-    }else{
+    console.log('person index props @ render ',this.props);
 
-      return (
-        <Panel header="There's a Problem!" bsStyle="warning">
-          <p>Loading...</p>
-        </Panel>
-      )
-    }
+    return (
+      <div id={style.CSVload}>
+        <h1>Showing Everybody</h1>
+        <div>
+          <Grid>
+            {this.generateList(this.props.peopleList)}
+          </Grid>
+        </div>
+      </div>
+    );
 
   }
 }
@@ -90,9 +80,9 @@ class PersonIndex extends Component {
 function mapStateToProps(state,ownProps){
   return {
     peopleList:state.people,
+    sortBy:state.ui.sortBy,
     firstItem:state.ui.firstItem,
-    lastItem:state.ui.lastItem,
-    sortBy:state.ui.sortBy
+    lastItem:state.ui.lastItem
   };
 }
 

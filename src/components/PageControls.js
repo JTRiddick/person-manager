@@ -5,7 +5,7 @@ import
 from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
-import { setRange } from '../actions';
+import { setRange, getPage } from '../actions';
 
 import style from '../sass/style.scss';
 
@@ -20,14 +20,7 @@ class PageControls extends Component {
       showing:[this.props.firstItem,this.props.lastItem],
       resultsPerPage:this.props.resultsPerPage
     })
-  }
-
-  componentWillReceiveProps(nextProps){
-    console.log('controls got props ',nextProps);
-    this.setState({
-      showing:[nextProps.firstItem,nextProps.lastItem],
-      resultsPerPage:this.props.resultsPerPage
-    })
+    this.props.getPage(this.props.firstItem,this.props.lastItem);
   }
 
   onClick = value => {
@@ -37,17 +30,25 @@ class PageControls extends Component {
     let newMin;
     let newMax;
     console.log('onclick called with ', value, 'min',min,'max',max);
+
     switch (value) {
       case 'min':
         //lower page
-        let newMin = min - this.state.resultsPerPage;
-        (min >= 0) ? newMin : newMin = 0;
+        let newMin = (min >= this.state.resultsPerPage) ? min - this.state.resultsPerPage : 0;
         console.log('new min ',newMin);
-        return this.props.setRange(newMin,newMin + this.state.resultsPerPage);
+        this.setState({
+          showing:[newMin,newMin+this.state.resultsPerPage],
+        })
+        this.props.setRange(newMin,newMin + this.state.resultsPerPage);
+        return this.props.getPage(newMin,newMin + this.state.resultsPerPage);
       case 'max':
         let newMax = max + this.state.resultsPerPage;
         console.log('new max ',newMax);
-        return this.props.setRange(max,newMax);
+        this.setState({
+          showing:[max,newMax],
+        })
+        this.props.setRange(max,newMax);
+        return this.props.getPage(max,newMax);
       default:
         break;
     }
@@ -56,7 +57,6 @@ class PageControls extends Component {
   render(){
     let firstItem = this.state.showing[0] || 0;
     let lastItem = this.state.showing[1] || 0;
-
     return(
       <Panel>
         <Clearfix>
@@ -85,4 +85,4 @@ function mapStateToProps(state,ownProps){
   }
 }
 
-export default connect(mapStateToProps,{setRange})(PageControls)
+export default connect(mapStateToProps,{setRange,getPage})(PageControls)

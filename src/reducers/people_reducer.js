@@ -19,7 +19,7 @@ export default function(state = {},action){
         }
         return res;
       },[])
-      console.log('paged..',paged);
+      console.log('paged..',...paged);
       return Object.assign({},state,paged);
     case GET_FILTERED_LIST:
       const filteredList = action.payload.csv;
