@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import
   {Panel,Clearfix,ButtonToolbar,ButtonGroup,Button}
 from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { Link, NavLink, Route } from 'react-router-dom';
 
-import { setRange, getPage } from '../actions';
+import { setRange, getPage, resetResults } from '../actions';
 
 import style from '../sass/style.scss';
 
@@ -29,7 +29,7 @@ class PageControls extends Component {
     let max = this.state.showing[1];
     let newMin;
     let newMax;
-    console.log('onclick called with ', value, 'min',min,'max',max);
+    // console.log('onclick called with ', value, 'min',min,'max',max);
 
     switch (value) {
       case 'min':
@@ -49,6 +49,8 @@ class PageControls extends Component {
         })
         this.props.setRange(max,newMax);
         return this.props.getPage(max,newMax);
+      case 'back':
+        return this.props.resetResults(()=>{this.props.history.push('/')});
       default:
         break;
     }
@@ -63,7 +65,7 @@ class PageControls extends Component {
           <ButtonToolbar>
             <ButtonGroup>
               <Button onClick={()=>{this.onClick('min')}}>Previous</Button>
-              <Button value={2}>
+              <Button onClick={()=>{this.onClick('back')}}>
                 Showing: {firstItem} - {lastItem}
               </Button>
               <Button onClick={()=>{this.onClick('max')}}>Next</Button>
@@ -85,4 +87,4 @@ function mapStateToProps(state,ownProps){
   }
 }
 
-export default connect(mapStateToProps,{setRange,getPage})(PageControls)
+export default connect(mapStateToProps,{setRange,getPage,resetResults})(PageControls)

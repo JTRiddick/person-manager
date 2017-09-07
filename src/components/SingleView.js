@@ -27,7 +27,7 @@ class SingleView extends Component{
     const { person } = this.props;
     if (person){
       return (
-        <div id={style.singleview}>
+        <Panel id={style.singleview}>
           <h2>{person['ID']}</h2>
           <div>
             <h6>
@@ -55,7 +55,7 @@ class SingleView extends Component{
               {person['State']}
             </p>
           </div>
-        </div>
+        </Panel>
       );
     } else {
       return(

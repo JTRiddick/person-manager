@@ -3,6 +3,7 @@ import _ from 'lodash';
 export const GET_MASTER_LIST = 'GET_MASTER_LIST';
 export const GET_PAGED_LIST = 'GET_PAGED_LIST';
 export const GET_FILTERED_LIST = 'GET_FILTERED_LIST';
+export const RESET_RESULTS = 'RESET_RESULTS';
 export const SORT_LIST = 'SORT_LIST';
 export const GET_INDIVIDUAL = 'GET_INDIVIDUAL';
 export const LOAD_CSV = 'LOAD_CSV';
@@ -40,5 +41,12 @@ export function setRange(min,max){
   return{
     type: SET_RANGE,
     payload: {min,max}
+  }
+}
+
+export function resetResults(cb){
+  cb();
+  return{
+    type: RESET_RESULTS
   }
 }

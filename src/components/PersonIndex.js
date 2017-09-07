@@ -26,14 +26,9 @@ class PersonIndex extends Component {
 
   componentWillMount(){
     console.log('index will mount');
-
-  }
-
-  componentDidMount(){
-    console.log('index did mount');
-    if(!this.props.peopleList || this.props.peopleList=={}){
+    if(!this.props.people || this.props.people=={}){
       console.log('index will mount shows no people list');
-      this.setState({loadError:true})
+      this.props.getPage(this.state.currentRange.min,this.state.currentRange.max);
     }else{
       this.setState({
         loadError:false,
@@ -41,9 +36,14 @@ class PersonIndex extends Component {
     }
   }
 
+  componentDidMount(){
+    //console.log('index did mount');
+
+  }
+
 
   generateList(people){
-    console.log('generating list ',people);
+    //console.log('generating list ',people);
     if (people === {}) {
       this.setState({loadError:true})
     return (<div className={`container ${style.denied}`}>
@@ -60,8 +60,8 @@ class PersonIndex extends Component {
 
 
   render() {
-    console.log('person index state at render ',this.state);
-    console.log('person index props @ render ',this.props);
+    //console.log('person index state at render ',this.state);
+    //console.log('person index props @ render ',this.props);
 
     return (
       <div id={style.CSVload}>

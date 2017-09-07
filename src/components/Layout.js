@@ -32,7 +32,7 @@ export const Layout = props => {
         {props.children}
       </div>
       <section className="page-controls">
-        <PageControls />
+        <PageControls history={props.history}/>
       </section>
       <footer>
         <p></p>

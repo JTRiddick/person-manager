@@ -2,7 +2,9 @@ import _ from 'lodash';
 import {GET_MASTER_LIST,
   GET_INDIVIDUAL,
   GET_PAGED_LIST,
-  GET_FILTERED_LIST} from '../actions';
+  GET_FILTERED_LIST,
+  RESET_RESULTS
+} from '../actions';
 
 export default function(state = {},action){
   switch(action.type){
@@ -19,7 +21,7 @@ export default function(state = {},action){
         }
         return res;
       },[])
-      console.log('paged..',...paged);
+      //console.log('paged..',...paged);
       return Object.assign({},state,paged);
     case GET_FILTERED_LIST:
       const filteredList = action.payload.csv;
@@ -29,6 +31,8 @@ export default function(state = {},action){
       return Object.assign(
         {},state,{[action.payload.id]:person[action.payload.id]}
       )
+    case RESET_RESULTS:
+      return {};
     default:
       return state;
   }
