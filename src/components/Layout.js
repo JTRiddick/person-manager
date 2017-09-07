@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter, NavLink, Route } from 'react-router-dom';
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Nav, Navbar, NavItem, PageHeader } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import PageControls from './PageControls';
@@ -9,6 +9,9 @@ export const Layout = props => {
   return(
     <div className="app-container">
       <header>
+        <PageHeader>
+            HR <small>Demense Portal</small>
+        </PageHeader>
         <section id="navigation-container">
           <Navbar>
             <Nav>
@@ -32,7 +35,7 @@ export const Layout = props => {
         <PageControls />
       </section>
       <footer>
-
+        <p></p>
       </footer>
     </div>
   )

@@ -1,10 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import
-  {Panel,Clearfix,Col}
+  {Panel,Clearfix,Grid,Row,Col}
 from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 import style from '../sass/style.scss';
 
+class PersonDetail extends Component{
+  constructor(props){
+    super(props);
+    //state will toggle class, main row for expanded, collapse row for collapsed
+    this.state = {
+      rowStatus:'main-row',
+      secret:'hidden'
+    }
+  }
+
+  render(){
+    const person = this.props.person;
+    if(!person){
+      return(
+        <div>
+          ?
+        </div>
+      )
+    }else{
+      return(
+        <Row className={`${this.state.rowStatus}`}>
+          <div className="column-header">
+            <Link to={`/show/${person.ID}`}>
+              {person['ID']}
+            </Link>
+          </div>
+          <Name person={person}/>
+          <Contact person={person}/>
+          <Location person={person}/>
+          <Secret person={person} status={this.state.secret}/>
+        </Row>
+      )
+    }
+  }
+
+}
 
 const Name = props => {
   return(
@@ -49,10 +86,10 @@ const Location = props => {
 
 const Secret = props => {
   return (
-    <div>
+    <div className={props.status}>
       <p>{props.person['SSN']}</p>
     </div>
   )
 }
 
-export {Name,Contact,Location,Secret}
+export {PersonDetail,Name,Contact,Location,Secret}

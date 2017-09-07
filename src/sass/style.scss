@@ -1,5 +1,3 @@
-@import "palette.scss";
-@import "mixins.scss";
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 :global{
@@ -17,7 +15,7 @@
   }
   .column-header{
     background-color: #1A5276;
-    a,a:visited{
+    a,a:visited,a:hover,a:active{
       color: #F7F9F9;
       padding-left: 2px;
     }

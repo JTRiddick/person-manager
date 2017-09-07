@@ -12,13 +12,21 @@ import style from '../sass/style.scss';
 class PageControls extends Component {
   constructor(props){
     super(props);
-    this.state = { showing:[0,10], resultsPerPage:10}
+
+  }
+
+  componentWillMount(){
+    this.setState({
+      showing:[this.props.firstItem,this.props.lastItem],
+      resultsPerPage:this.props.resultsPerPage
+    })
   }
 
   componentWillReceiveProps(nextProps){
     console.log('controls got props ',nextProps);
     this.setState({
-      showing:[nextProps.firstItem,nextProps.lastItem]
+      showing:[nextProps.firstItem,nextProps.lastItem],
+      resultsPerPage:this.props.resultsPerPage
     })
   }
 
@@ -33,7 +41,7 @@ class PageControls extends Component {
       case 'min':
         //lower page
         let newMin = min - this.state.resultsPerPage;
-        (min > 0) ? newMin : newMin = 0;
+        (min >= 0) ? newMin : newMin = 0;
         console.log('new min ',newMin);
         return this.props.setRange(newMin,newMin + this.state.resultsPerPage);
       case 'max':
@@ -46,6 +54,8 @@ class PageControls extends Component {
   }
 
   render(){
+    let firstItem = this.state.showing[0] || 0;
+    let lastItem = this.state.showing[1] || 0;
 
     return(
       <Panel>
@@ -54,7 +64,7 @@ class PageControls extends Component {
             <ButtonGroup>
               <Button onClick={()=>{this.onClick('min')}}>Previous</Button>
               <Button value={2}>
-                Showing: {this.state.showing[0]} - {this.state.showing[1]}
+                Showing: {firstItem} - {lastItem}
               </Button>
               <Button onClick={()=>{this.onClick('max')}}>Next</Button>
             </ButtonGroup>

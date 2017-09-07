@@ -1,1 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);.app-container{font-family:Roboto,sans-serif}.main-row{outline:2px solid #a9a9a9;padding:0 0 4px;margin-bottom:2px}.column-header{background-color:#1a5276}.column-header a,.column-header a:visited{color:#f7f9f9;padding-left:2px}
+@import url(https://fonts.googleapis.com/css?family=Roboto);.app-container {
+  font-family: 'Roboto',sans-serif; }
+
+.main-row {
+  outline: 2px solid darkgray;
+  padding: 0 0 4px 0;
+  margin-bottom: 2px; }
+
+.column-header {
+  background-color: #1A5276; }
+  .column-header a, .column-header a:visited, .column-header a:hover, .column-header a:active {
+    color: #F7F9F9;
+    padding-left: 2px; }
