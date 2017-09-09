@@ -4,6 +4,7 @@ import { Nav, Navbar, NavItem, PageHeader } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import PageControls from './PageControls';
+import SearchFilter from './SearchFilter';
 
 export const Layout = props => {
   return(
@@ -26,16 +27,16 @@ export const Layout = props => {
               </LinkContainer>
             </Nav>
           </Navbar>
+          <section className="page-controls">
+            <PageControls history={props.history}/>
+          </section>
         </section>
       </header>
       <div className="app-content">
         {props.children}
       </div>
-      <section className="page-controls">
-        <PageControls history={props.history}/>
-      </section>
       <footer>
-        <p></p>
+        <SearchFilter className="search-filter"/>
       </footer>
     </div>
   )

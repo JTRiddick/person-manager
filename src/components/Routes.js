@@ -7,7 +7,7 @@ import NotFoundPage from './NotFound';
 
 import PersonIndex from './PersonIndex';
 import SingleView from './SingleView';
-import SearchFilter from './SearchFilter'
+// import SearchFilter from './SearchFilter'
 // import ManageData from './ManageData';
 
 export class Routes extends React.Component {
