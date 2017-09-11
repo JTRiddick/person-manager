@@ -5,6 +5,8 @@ export const GET_PAGED_LIST = 'GET_PAGED_LIST';
 export const GET_FILTERED_LIST = 'GET_FILTERED_LIST';
 export const RESET_RESULTS = 'RESET_RESULTS';
 export const SORT_LIST = 'SORT_LIST';
+export const SEARCH_LIST = 'SEARCH_LIST';
+export const FILTER_LIST = 'FILTER_LIST';
 export const GET_INDIVIDUAL = 'GET_INDIVIDUAL';
 export const LOAD_CSV = 'LOAD_CSV';
 export const SET_RANGE = 'SET_RANGE';
@@ -34,6 +36,17 @@ export function getOne(id){
 }
 
 export function filterList(attributes){
+
+}
+
+export function searchList(term){
+  return{
+    type: SEARCH_LIST,
+    payload: {csv, term}
+  }
+}
+
+export function sortList(category){
 
 }
 

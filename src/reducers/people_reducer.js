@@ -2,8 +2,8 @@ import _ from 'lodash';
 import {GET_MASTER_LIST,
   GET_INDIVIDUAL,
   GET_PAGED_LIST,
-  GET_FILTERED_LIST,
-  RESET_RESULTS
+  RESET_RESULTS,
+  SEARCH_LIST,
 } from '../actions';
 
 export default function(state = {},action){
@@ -23,14 +23,16 @@ export default function(state = {},action){
       },[])
       //console.log('paged..',...paged);
       return Object.assign({},state,paged);
-    case GET_FILTERED_LIST:
-      const filteredList = action.payload.csv;
-      return Object.assign({},state,filteredList);
+
     case GET_INDIVIDUAL:
       const person = _.mapKeys(action.payload.csv,'ID');
       return Object.assign(
-        {},state,{[action.payload.id]:person[action.payload.id]}
-      )
+        {},state,{[action.payload.id]:person[action.payload.id]})
+    case SEARCH_LIST:
+      const searchedList = _.find(action.payload.csv, (item)=>{
+        return _.includes(item,action.payload.term)
+      })
+      return Object.assign({},state,searchedList);
     case RESET_RESULTS:
       return {};
     default:

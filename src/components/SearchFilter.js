@@ -6,7 +6,7 @@ import
 from 'react-bootstrap';
 import { Link, NavLink, Route } from 'react-router-dom';
 
-import { filterList } from '../actions';
+import { searchList } from '../actions';
 
 import style from '../sass/style.scss';
 
@@ -14,25 +14,20 @@ class SearchFilter extends Component {
   constructor(props){
     super(props);
     this.state =  {
-      nameVal:'',
-      jobVal:'',
+      searchVal:'',
     }
   }
 
   getValidationState(){
-    const length = this.state.nameVal.length;
+    const length = this.state.searchVal.length;
     if (length < 2 && length !== 0) return 'warning';
-    else return 'warning';
+    return 'success';
   }
 
-  handleNameChange(e){
+  handleChange(e){
     console.log('handle change target ', e.target);
-    this.setState({nameVal:e.target.value});
-  }
-
-  handleJobChange(e){
-    console.log('handle change target ', e.target);
-    this.setState({jobVal:e.target.value});
+    this.setState({searchVal:e.target.value});
+    this.props.searchList(e.target.value);
   }
 
   render(){
@@ -41,19 +36,13 @@ class SearchFilter extends Component {
       <Panel>
         <form>
           <FormGroup controlId="formBasicText"
-            validationState={()=>this.getValidationState()}
+            validationState={this.getValidationState()}
           >
             <ControlLabel>Search for a Person</ControlLabel>
             <FormControl
               type="text"
-              value={this.state.nameVal}
-              onChange={(e)=>this.handleNameChange(e)}
-            />
-            <ControlLabel>Search by Job Title</ControlLabel>
-            <FormControl
-              type="text"
-              value={this.state.jobVal}
-              onChange={(e)=>this.handleJobChange(e)}
+              value={this.state.searchVal}
+              onChange={(e)=>this.handleChange(e)}
             />
             <FormControl.Feedback />
           </FormGroup>
@@ -70,4 +59,4 @@ function mapStateToProps(state,ownProps){
   }
 }
 
-export default connect(mapStateToProps,{})(SearchFilter)
+export default connect(mapStateToProps,{searchList})(SearchFilter)
