@@ -37,9 +37,10 @@ class SearchFilter extends Component {
     }
   }
 
-  performSearch(){
+  performSearch(e){
+    e.preventDefault();
     if(this.state.allowSearch){
-      this.props.searchList(this.state.searchTerm);
+      this.props.searchList(this.state.searchTerm,()=>{this.props.history.push('/show')});
     }else{
       console.log('notice: not going to search');
     }
@@ -54,6 +55,7 @@ class SearchFilter extends Component {
           <FormGroup controlId="formBasicText"
             ref={(formGroup)=>this.formGroup=formGroup}
             validationState={this.getValidationState()}
+            onSubmit={(e)=>this.performSearch(e)}
           >
             <ControlLabel>Search for a Person</ControlLabel>
             <FormControl

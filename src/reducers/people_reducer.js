@@ -4,6 +4,7 @@ import {GET_MASTER_LIST,
   GET_PAGED_LIST,
   RESET_RESULTS,
   SEARCH_LIST,
+  FILTER_LIST
 } from '../actions';
 
 export default function(state = {},action){
@@ -14,15 +15,18 @@ export default function(state = {},action){
     case GET_PAGED_LIST:
       //use reducer to take a range of rows from JSON data
       //displaying whole list at once slows browser considerably
-      const paged = _.reduce(action.payload.csv,(res={},val,key)=>{
+      const paged = _.reduce(action.payload.csv,(res,val,key)=>{
         if(key >= action.payload.start && key <= action.payload.end){
+          console.log('paging item ', val, 'to ', res);
           res.push(val);
           return res;
         }
         return res;
+
       },[])
-      console.log('paged..',...paged);
-      return Object.assign({},state,paged);
+      console.log('reducder paged..',paged, 'type of', typeof paged);
+      // return Object.assign({},state,paged);
+      return paged;
 
     case GET_INDIVIDUAL:
       const person = _.mapKeys(action.payload.csv,'ID');
@@ -33,10 +37,11 @@ export default function(state = {},action){
       const searchedList = _.find(action.payload.csv, (item)=>{
         return _.includes(item,action.payload.term)
       })
-      console.log('searched list? ?',searchedList);
-      return Object.assign({},searchedList);
+      return Object.assign({},{[0]:searchedList[0]});
+    case FILTER_LIST:
+      return ([]);
     case RESET_RESULTS:
-      return {};
+      return [];
     default:
       return state;
   }

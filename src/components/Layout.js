@@ -36,7 +36,7 @@ export const Layout = props => {
         {props.children}
       </div>
       <footer>
-        <SearchFilter className="search-filter"/>
+        <SearchFilter className="search-filter" history={props.history}/>
       </footer>
     </div>
   )

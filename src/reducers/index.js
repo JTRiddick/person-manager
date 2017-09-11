@@ -4,6 +4,7 @@ import uiReducer from './ui_reducer';
 
 const initialState = {
   // initial state object
+  people:[]
 };
 
 

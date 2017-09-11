@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import  PageControls  from './PageControls';
 import { PersonDetail } from './PersonDetail';
 
-import { getAll, getPage } from '../actions';
+import { getAll, getPage, resetResults } from '../actions';
 
 import style from '../sass/style.scss';
 
@@ -33,6 +33,7 @@ class PersonIndex extends Component {
       this.setState({
         loadError:false,
       })
+      this.props.resetResults(()=>{})
     }
   }
 
@@ -43,8 +44,8 @@ class PersonIndex extends Component {
 
 
   generateList(people){
-    //console.log('generating list ',people);
-    if (people === {}) {
+    console.log('generating list ',people.length,people);
+    if (people === []) {
       this.setState({loadError:true})
     return (<div className={`container ${style.denied}`}>
       <Panel header="There's a Problem!" bsStyle="danger">
@@ -88,4 +89,4 @@ function mapStateToProps(state,ownProps){
   };
 }
 
-export default connect(mapStateToProps,{getAll,getPage})(PersonIndex)
+export default connect(mapStateToProps,{getAll,getPage,resetResults})(PersonIndex)

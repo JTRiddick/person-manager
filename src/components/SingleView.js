@@ -19,6 +19,9 @@ class SingleView extends Component{
     if(!this.props.person){
       const {id} = this.props.match.params;
       this.props.getOne(id);
+    }else if (!this.props.match.params) {
+      //individual search results
+      console.log('no params okay')
     }
 
   }
@@ -57,7 +60,7 @@ class SingleView extends Component{
     } else {
       return(
         <Panel header="There's a Problem!" bsStyle="warning">
-          <p>Loading...</p>
+          <p>Person not found...</p>
         </Panel>
       )
     }
@@ -68,7 +71,7 @@ class SingleView extends Component{
 }
 
 const mapStateToProps = (state,ownProps) => {
-  return {person:state.people[ownProps.match.params.id]}
+  return {person:state.people[ownProps.match.params.id || 0]}
 }
 
 export default connect(mapStateToProps,{getOne})(SingleView);

@@ -17,6 +17,7 @@ export class Routes extends React.Component {
         <Layout>
           <Switch>
             <Route exact path="/" component={PersonIndex}/>
+            <Route exact path="/show" component={SingleView}/>
             <Route exact path="/show/:id" component={SingleView}/>
             <Route component={NotFoundPage} />
           </Switch>

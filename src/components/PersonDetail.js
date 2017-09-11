@@ -32,7 +32,7 @@ class PersonDetail extends Component{
       )
     }else{
       return(
-        <Row className={`${this.state.rowStatus}`}>
+        <Row className={`${this.state.rowStatus}`} key={person.ID}>
           <div className="column-header">
             <Link to={`/show/${person.ID}`}>
               {person['Last Name']}, {person['First Name']} ID: {person['ID']}

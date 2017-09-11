@@ -39,7 +39,8 @@ export function filterList(attributes){
 
 }
 
-export function searchList(term){
+export function searchList(term,cb){
+  cb();//this method returns a single result, use callback to send us to that view
   return{
     type: SEARCH_LIST,
     payload: {csv, term}
