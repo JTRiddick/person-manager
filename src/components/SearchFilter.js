@@ -6,7 +6,7 @@ import
 from 'react-bootstrap';
 import { Link, NavLink, Route } from 'react-router-dom';
 
-import { searchList } from '../actions';
+import { searchList,resetResults } from '../actions';
 
 import style from '../sass/style.scss';
 
@@ -22,23 +22,24 @@ class SearchFilter extends Component {
   getValidationState(){
     const length = this.state.searchVal.length;
     if (length < 2 && this.state.allowSearch) {
-      this.setState({allowSearch:false})
       return 'warning'
     }else{
-    this.setState({allowSearch:true})
     return 'success';
     }
   }
 
   handleChange(e){
-    console.log('handle change target ', e.target);
     this.setState({searchVal:e.target.value});
-
+    if(this.formGroup.props.validationState === 'success'){
+      this.setState({allowSearch:true, searchTerm:e.target.value})
+    }else{
+      this.setState({allowSearch:false})
+    }
   }
 
   performSearch(){
     if(this.state.allowSearch){
-      this.props.searchList(e.target.value);
+      this.props.searchList(this.state.searchTerm);
     }else{
       console.log('notice: not going to search');
     }
@@ -51,6 +52,7 @@ class SearchFilter extends Component {
       <Panel>
         <form>
           <FormGroup controlId="formBasicText"
+            ref={(formGroup)=>this.formGroup=formGroup}
             validationState={this.getValidationState()}
           >
             <ControlLabel>Search for a Person</ControlLabel>
@@ -75,4 +77,4 @@ function mapStateToProps(state,ownProps){
   }
 }
 
-export default connect(mapStateToProps,{searchList})(SearchFilter)
+export default connect(mapStateToProps,{searchList,resetResults})(SearchFilter)

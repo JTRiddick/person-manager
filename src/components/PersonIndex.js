@@ -50,7 +50,10 @@ class PersonIndex extends Component {
       <Panel header="There's a Problem!" bsStyle="danger">
         <p>No People Found</p>
       </Panel>
-    </div>)}else{
+    </div>)
+  }else if (people.length < 1) {
+    return(<PersonDetail person={person}/>)
+  }else{
     return _.map(people, person => {
       return(
         <PersonDetail person={person}  key={person['ID']}/>
@@ -60,8 +63,8 @@ class PersonIndex extends Component {
 
 
   render() {
-    //console.log('person index state at render ',this.state);
-    //console.log('person index props @ render ',this.props);
+    console.log('person index state at render ',this.state);
+    console.log('person index props @ render ',this.props);
 
     return (
       <div id={style.CSVload}>

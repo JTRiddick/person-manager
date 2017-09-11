@@ -21,13 +21,14 @@ export default function(state = {},action){
         }
         return res;
       },[])
-      //console.log('paged..',...paged);
+      console.log('paged..',...paged);
       return Object.assign({},state,paged);
 
     case GET_INDIVIDUAL:
       const person = _.mapKeys(action.payload.csv,'ID');
       return Object.assign(
-        {},state,{[action.payload.id]:person[action.payload.id]})
+        {},state,{[action.payload.id]:person[action.payload.id]}
+      )
     case SEARCH_LIST:
       const searchedList = _.find(action.payload.csv, (item)=>{
         return _.includes(item,action.payload.term)
