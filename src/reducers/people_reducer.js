@@ -32,7 +32,8 @@ export default function(state = {},action){
       const searchedList = _.find(action.payload.csv, (item)=>{
         return _.includes(item,action.payload.term)
       })
-      return Object.assign({},state,searchedList);
+      console.log('searched list? ?',searchedList);
+      return Object.assign({},searchedList);
     case RESET_RESULTS:
       return {};
     default:

@@ -15,19 +15,34 @@ class SearchFilter extends Component {
     super(props);
     this.state =  {
       searchVal:'',
+      allowSearch:false
     }
   }
 
   getValidationState(){
     const length = this.state.searchVal.length;
-    if (length < 2 && length !== 0) return 'warning';
+    if (length < 2 && this.state.allowSearch) {
+      this.setState({allowSearch:false})
+      return 'warning'
+    }else{
+    this.setState({allowSearch:true})
     return 'success';
+    }
   }
 
   handleChange(e){
     console.log('handle change target ', e.target);
     this.setState({searchVal:e.target.value});
-    this.props.searchList(e.target.value);
+
+  }
+
+  performSearch(){
+    if(this.state.allowSearch){
+      this.props.searchList(e.target.value);
+    }else{
+      console.log('notice: not going to search');
+    }
+
   }
 
   render(){
@@ -47,6 +62,7 @@ class SearchFilter extends Component {
             <FormControl.Feedback />
           </FormGroup>
         </form>
+        <Button onClick={(e)=>this.performSearch(e)}>Search</Button>
       </Panel>
     )
   }
