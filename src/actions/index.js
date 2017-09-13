@@ -58,7 +58,7 @@ export function setRange(min,max){
   }
 }
 
-export function resetResults(cb){
+export function resetResults(cb=()=>{console.log('reset callback fired')}){
   cb();
   return{
     type: RESET_RESULTS

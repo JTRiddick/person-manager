@@ -62,6 +62,7 @@ class SearchFilter extends Component {
               type="text"
               value={this.state.searchVal}
               onChange={(e)=>this.handleChange(e)}
+              onSubmit={(e)=>this.performSearch(e)}
             />
             <FormControl.Feedback />
           </FormGroup>

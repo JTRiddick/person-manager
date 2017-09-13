@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link, withRouter, NavLink, Route } from 'react-router-dom';
-import { Nav, Navbar, NavItem, PageHeader } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import {  withRouter } from 'react-router-dom';
+import {  PageHeader } from 'react-bootstrap';
 
 import PageControls from './PageControls';
 import SearchFilter from './SearchFilter';
+import {NavigationComponent} from './Navigation'
 
 export const Layout = props => {
+  console.log('layout props ', {...props});
   return(
     <div className="app-container">
       <header>
@@ -14,27 +15,19 @@ export const Layout = props => {
             HR <small>Demense Portal</small>
         </PageHeader>
         <section id="navigation-container">
-          <Navbar>
-            <Nav>
-              <LinkContainer to="/">
-                <NavItem>View All Data</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/SearchFilter">
-                <NavItem>Search/Filter</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/Data">
-                <NavItem>Manage Data</NavItem>
-              </LinkContainer>
-            </Nav>
-          </Navbar>
-          <section className="page-controls">
-            <PageControls history={props.history}/>
-          </section>
+          <NavigationComponent
+            history={props.history}
+          />
+        </section>
+        <section className="page-controls">
+          <PageControls history={props.history}/>
         </section>
       </header>
+
       <div className="app-content">
         {props.children}
       </div>
+
       <footer>
         <SearchFilter className="search-filter" history={props.history}/>
       </footer>

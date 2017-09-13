@@ -33,7 +33,6 @@ class PersonIndex extends Component {
       this.setState({
         loadError:false,
       })
-      this.props.resetResults(()=>{})
     }
   }
 
@@ -47,6 +46,7 @@ class PersonIndex extends Component {
     console.log('generating list ',people.length,people);
     if (people === []) {
       this.setState({loadError:true})
+      this.resetResults();
     return (<div className={`container ${style.denied}`}>
       <Panel header="There's a Problem!" bsStyle="danger">
         <p>No People Found</p>

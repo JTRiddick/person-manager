@@ -65,7 +65,7 @@ class PageControls extends Component {
           <ButtonToolbar>
             <ButtonGroup>
               <Button onClick={()=>{this.onClick('min')}}>Previous</Button>
-              <Button onClick={()=>{this.onClick('back')}}>
+              <Button onClick={()=>{this.onClick(/*'back'*/)}}>
                 Showing: {firstItem} - {lastItem}
               </Button>
               <Button onClick={()=>{this.onClick('max')}}>Next</Button>

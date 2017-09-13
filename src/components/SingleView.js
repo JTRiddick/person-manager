@@ -10,8 +10,8 @@ import style from '../sass/style.scss';
 
 class SingleView extends Component{
 
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
   }
 
   componentDidMount(){
