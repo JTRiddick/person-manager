@@ -15,6 +15,7 @@ class PersonDetail extends Component{
       secret:'hidden'
     }
   }
+  
 
   toggleRow(){
     (this.state.rowStatus == 'main-row') ?

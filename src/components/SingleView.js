@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import
   {Panel,Clearfix,ButtonToolbar,ButtonGroup,Button} from 'react-bootstrap';
-import { getOne } from '../actions';
+import { getOne, resetResults } from '../actions';
 
 import style from '../sass/style.scss';
 
@@ -24,6 +24,10 @@ class SingleView extends Component{
       console.log('no params okay')
     }
 
+  }
+
+  componentWillUnmount(){
+    this.props.resetResults();
   }
 
   render(){
@@ -74,4 +78,4 @@ const mapStateToProps = (state,ownProps) => {
   return {person:state.people[ownProps.match.params.id || 0]}
 }
 
-export default connect(mapStateToProps,{getOne})(SingleView);
+export default connect(mapStateToProps,{getOne,resetResults})(SingleView);

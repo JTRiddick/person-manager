@@ -26,18 +26,26 @@ class PersonIndex extends Component {
 
   componentWillMount(){
     console.log('index will mount');
-    if(!this.props.people || this.props.people=={}){
+    if(!this.props.people || this.props.people.length < 0 || !Array.isArray(this.props.people)){
       console.log('index will mount shows no people list');
       this.props.getPage(this.state.currentRange.min,this.state.currentRange.max);
     }else{
-      this.setState({
-        loadError:false,
-      })
+      console.log('temporary fallback');
+      //temporary fallback to test mounting from nav
+      this.props.getPage(0,9);
+
     }
+    this.setState({
+      loadError:false,
+    })
   }
 
   componentDidMount(){
     //console.log('index did mount');
+
+  }
+
+  componentWillUnmount(){
 
   }
 
@@ -52,8 +60,6 @@ class PersonIndex extends Component {
         <p>No People Found</p>
       </Panel>
     </div>)
-  }else if (people.length < 1) {
-    return(<PersonDetail person={person}/>)
   }else{
     return _.map(people, person => {
       return(
