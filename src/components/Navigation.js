@@ -9,7 +9,7 @@ export const NavigationComponent = props => {
   if(props.history.location.pathname === "/"){
     return(
       <Navbar>
-        <Nav>
+        <Nav bsStyle='pills'>
           <LinkContainer to="/">
             <NavItem>View All Data</NavItem>
           </LinkContainer>
@@ -24,13 +24,9 @@ export const NavigationComponent = props => {
     }
   return(
     <Navbar>
-      <Nav>
-        <NavItem>
-          <LinkContainer to="/">
-            <NavItem>Return to List</NavItem>
-          </LinkContainer>
-        </NavItem>
-      </Nav>
+      <LinkContainer to="/">
+        <Button bsStyle='primary'>Return to List</Button>
+      </LinkContainer>
     </Navbar>
   )
 

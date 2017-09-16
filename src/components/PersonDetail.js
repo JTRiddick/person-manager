@@ -7,15 +7,15 @@ import {Link} from 'react-router-dom';
 import style from '../sass/style.scss';
 
 class PersonDetail extends Component{
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     //state will toggle class, main row for expanded, collapse row for collapsed
     this.state = {
       rowStatus:'main-row',
       secret:'hidden'
     }
   }
-  
+
 
   toggleRow(){
     (this.state.rowStatus == 'main-row') ?

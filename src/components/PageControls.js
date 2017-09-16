@@ -9,9 +9,10 @@ import { setRange, getPage, resetResults } from '../actions';
 
 import style from '../sass/style.scss';
 
+//this needs to do something else when we're on single view
 class PageControls extends Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
 
   }
 
