@@ -2,7 +2,10 @@
 import {
   SET_RANGE,
   TOGGLE_COL,
-  SORT_LIST
+  SORT_LIST,
+  TOGGLE_ALL_ROWS,
+  TOGGLE_PAGE_CONTROL,
+  TOGGLE_SEARCH_FORM
 } from '../actions';
 
 const initialState = {
@@ -12,7 +15,10 @@ const initialState = {
   resultsPerPage:10,
   showColumns:['ID','First Name','Last Name','Email','Address','City','State',
     'Job','SSN','C_Number'],
-  sortBy:[]
+  sortBy:[],
+  collapsed:false,
+  showPageControls:true,
+  showSearchForm:true
 };
 
 const uiReducer = (state=initialState,action={}) => {
@@ -23,6 +29,15 @@ const uiReducer = (state=initialState,action={}) => {
         firstItem:action.payload.min,
         lastItem:action.payload.max
       });
+    case TOGGLE_PAGE_CONTROL:
+      console.log('toggled page control');
+      return {...state};
+    case TOGGLE_SEARCH_FORM:
+      console.log('toggled search form');
+      return {...state};
+    case TOGGLE_ALL_ROWS:
+      const collapsedState = state.collapsed ? false : true;
+      return Object.assign({},state,{ collapsed:collapsedState })
     default:
       return state;
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import
   {Panel,Clearfix,Grid,Row,Col,Button,Glyphicon}
 from 'react-bootstrap';
@@ -7,15 +8,22 @@ import {Link} from 'react-router-dom';
 import style from '../sass/style.scss';
 
 class PersonDetail extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     //state will toggle class, main row for expanded, collapse row for collapsed
+
     this.state = {
-      rowStatus:'main-row',
+      rowStatus:'hidden-row',
       secret:'hidden'
     }
   }
 
+  componentWillMount(){
+      console.log('toggled? ', this.props.collapseAll)
+      this.setState({
+        rowStatus: this.props.collapseAll ? 'hidden-row' : 'main-row'
+      })
+  }
 
   toggleRow(){
     (this.state.rowStatus == 'main-row') ?
@@ -106,4 +114,13 @@ const Secret = props => {
   )
 }
 
-export {PersonDetail,Name,Contact,Location,Secret}
+function mapStateToProps(state,ownProps){
+  console.log('own props for row : ', ownProps)
+  return{
+    collapseAll:state.ui.collapsed
+  }
+}
+
+// export {Name,Contact,Location,Secret}
+
+export default connect(mapStateToProps)(PersonDetail)

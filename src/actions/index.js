@@ -10,7 +10,12 @@ export const FILTER_LIST = 'FILTER_LIST';
 export const GET_INDIVIDUAL = 'GET_INDIVIDUAL';
 export const LOAD_CSV = 'LOAD_CSV';
 export const SET_RANGE = 'SET_RANGE';
+export const TOGGLE_SEARCH_FORM = 'TOGGLE_SEARCH_FORM';
 export const TOGGLE_COL = 'TOGGLE_COL';
+export const TOGGLE_PAGE_CONTROL = 'TOGGLE_PAGE_CONTROL';
+export const TOGGLE_ALL_ROWS = 'TOGGLE_ALL_ROWS';
+
+
 
 import csv from '../public/data/Employees.csv';
 
@@ -35,11 +40,17 @@ export function getOne(id){
   }
 }
 
+export function toggleAllRows(){
+  return{
+    type: TOGGLE_ALL_ROWS
+  }
+}
+
 export function filterList(attributes){
 
 }
 
-export function searchList(term,cb){
+export function searchList(term,cb=()=>{console.log('search callback fired')}){
   cb();//this method returns a single result, use callback to send us to that view
   return{
     type: SEARCH_LIST,

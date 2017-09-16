@@ -19,7 +19,7 @@ class PageControls extends Component {
   componentWillMount(){
     this.setState({
       showing:[this.props.firstItem,this.props.lastItem],
-      resultsPerPage:this.props.resultsPerPage
+      resultsPerPage: this.props.resultsPerPage - 1
     })
     this.props.getPage(this.props.firstItem,this.props.lastItem);
   }
@@ -58,6 +58,7 @@ class PageControls extends Component {
   }
 
   render(){
+
     let firstItem = this.state.showing[0] || 0;
     let lastItem = this.state.showing[1] || 0;
     return(

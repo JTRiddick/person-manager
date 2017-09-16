@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {csv} from 'd3-request';
 import _ from 'lodash';
-import {Panel, Grid, Row, Col, Clearfix} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { Panel, Grid, Row, Col, Clearfix, ButtonToolbar, ButtonGroup, Button }
+  from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import  PageControls  from './PageControls';
 import { PersonDetail } from './PersonDetail';
 
-import { getAll, getPage, resetResults } from '../actions';
+import { getAll, getPage, resetResults, toggleAllRows } from '../actions';
 
 import style from '../sass/style.scss';
 
@@ -18,9 +19,8 @@ class PersonIndex extends Component {
   constructor(props){
     super(props);
     this.state = {
-      expandRow:'main-row',
       loadError:true,
-      currentRange:{min:0,max:9}
+      currentRange:{min:0,max:9},
     };
   }
 
@@ -49,6 +49,11 @@ class PersonIndex extends Component {
 
   }
 
+  handleCollapseAll(){
+    this.props.toggleAllRows();
+    //changes redux store state to collapse all rows, shows up at render
+    //but passes old value to render
+  }
 
   generateList(people){
     console.log('generating list ',people.length,people);
@@ -63,7 +68,7 @@ class PersonIndex extends Component {
   }else{
     return _.map(people, person => {
       return(
-        <PersonDetail person={person}  key={person['ID']}/>
+        <PersonDetail person={person}  key={person['ID']} />
       )});
     }
   }
@@ -75,11 +80,19 @@ class PersonIndex extends Component {
 
     return (
       <div id={style.CSVload}>
+        <ButtonToolbar>
+          <ButtonGroup >
+            <Button onClick={()=>{this.props.toggleAllRows()}}>
+              Minimize/Maximize All
+            </Button>
+          </ButtonGroup>
+        </ButtonToolbar>
         <div>
           <Grid>
             {this.generateList(this.props.peopleList)}
           </Grid>
         </div>
+
       </div>
     );
 
@@ -91,8 +104,9 @@ function mapStateToProps(state,ownProps){
     peopleList:state.people,
     sortBy:state.ui.sortBy,
     firstItem:state.ui.firstItem,
-    lastItem:state.ui.lastItem
+    lastItem:state.ui.lastItem,
+    collapseAll:state.ui.collapsed
   };
 }
 
-export default connect(mapStateToProps,{getAll,getPage,resetResults})(PersonIndex)
+export default connect(mapStateToProps,{getAll,getPage,resetResults,toggleAllRows})(PersonIndex)
