@@ -64,20 +64,21 @@ class PersonDetail extends Component{
 }
 
 const Name = props => {
+
   return(
-    <Col md={4}>
-      <div>
-        <h4>
-          {props.person['First Name']}
-          <b> {props.person['Last Name']}</b>
-        </h4>
-        <h4>
-          {props.person['Job']}
-        </h4>
-      </div>
-    </Col>
-  )
-}
+      <Col md={4}>
+        <div>
+          <h4>
+            {props.person['First Name']}
+            <b> {props.person['Last Name']}</b>
+          </h4>
+          <h4>
+            {props.person['Job']}
+          </h4>
+        </div>
+      </Col>
+    )
+  }
 
 const Contact = props => {
 
@@ -87,6 +88,7 @@ const Contact = props => {
       <p>C Number: {props.person['C_Number']}</p>
     </Col>
   )
+
 }
 
 const Location = props => {
@@ -117,7 +119,8 @@ const Secret = props => {
 function mapStateToProps(state,ownProps){
   console.log('own props for row : ', ownProps)
   return{
-    collapseAll:state.ui.collapsed
+    collapseAll:state.ui.collapsed,
+    showColumns:state.ui.showColumns
   }
 }
 

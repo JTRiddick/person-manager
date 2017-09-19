@@ -7,7 +7,7 @@ import { Panel, Grid, Row, Col, Clearfix, ButtonToolbar, ButtonGroup, Button }
 import { Link } from 'react-router-dom';
 
 import  PageControls  from './PageControls';
-import { PersonDetail } from './PersonDetail';
+import  PersonDetail from './PersonDetail';
 
 import { getAll, getPage, resetResults, toggleAllRows } from '../actions';
 
@@ -51,8 +51,6 @@ class PersonIndex extends Component {
 
   handleCollapseAll(){
     this.props.toggleAllRows();
-    //changes redux store state to collapse all rows, shows up at render
-    //but passes old value to render
   }
 
   generateList(people){
