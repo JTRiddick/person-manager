@@ -11,6 +11,7 @@ class PersonDetail extends Component{
   constructor(props){
     super(props);
     //state will toggle class, main row for expanded, collapse row for collapsed
+    console.log('PersonDetail props ', props);
 
     this.state = {
       rowStatus:'hidden-row',
@@ -51,9 +52,9 @@ class PersonDetail extends Component{
             </Button>
           </div>
           <div className="row-detail">
-            <Name person={person}/>
-            <Contact person={person}/>
-            <Location person={person}/>
+            <Name person={person} status={[...this.props.showColumns].includes("name-detail") ? 'name-detail' : 'hidden'}/>
+            <Contact person={person} status={[...this.props.showColumns].includes("contact-detail") ? 'contact-detail' : 'hidden'}/>
+            <Location person={person} status={[...this.props.showColumns].includes("location-detail") ? 'location-detail' : 'hidden'}/>
             <Secret person={person} status={this.state.secret}/>
           </div>
         </Row>
@@ -64,36 +65,34 @@ class PersonDetail extends Component{
 }
 
 const Name = props => {
-
   return(
-      <Col md={4}>
-        <div>
-          <h4>
-            {props.person['First Name']}
-            <b> {props.person['Last Name']}</b>
-          </h4>
-          <h4>
-            {props.person['Job']}
-          </h4>
-        </div>
-      </Col>
-    )
-  }
+    <Col md={4} className={props.status}>
+      <div>
+        <h4>
+          {props.person['First Name']}
+          <b> {props.person['Last Name']}</b>
+        </h4>
+        <h4>
+          {props.person['Job']}
+        </h4>
+      </div>
+    </Col>
+  )
+}
 
 const Contact = props => {
 
   return(
-    <Col md={4} className="contact-detail">
+    <Col md={4} className={props.status}>
       <p>Email: {props.person['Email']}</p>
       <p>C Number: {props.person['C_Number']}</p>
     </Col>
   )
-
 }
 
 const Location = props => {
   return(
-    <Col md={4} className="address-detail">
+    <Col md={4} className={props.status}>
       <h4>Home Address:</h4>
       <p>
         {props.person['Address']}
@@ -126,4 +125,4 @@ function mapStateToProps(state,ownProps){
 
 // export {Name,Contact,Location,Secret}
 
-export default connect(mapStateToProps)(PersonDetail)
+export default connect(mapStateToProps,{})(PersonDetail)
