@@ -40,7 +40,8 @@ export function getOne(id){
   }
 }
 
-export function toggleAllRows(){
+export function toggleAllRows(cb=()=>{console.log('collapse/expand callback fired')}){
+  cb();
   return{
     type: TOGGLE_ALL_ROWS
   }

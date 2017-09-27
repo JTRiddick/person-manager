@@ -21,7 +21,7 @@ class SearchFilter extends Component {
 
   getValidationState(){
     const length = this.state.searchVal.length;
-    if (length < 2 && this.state.allowSearch) {
+    if (length < 2 && !this.state.allowSearch) {
       return 'warning'
     }else{
     return 'success';

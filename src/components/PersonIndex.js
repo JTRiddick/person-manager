@@ -21,11 +21,13 @@ class PersonIndex extends Component {
     this.state = {
       loadError:true,
       currentRange:{min:0,max:9},
+      peopleList:[]
     };
   }
 
   componentWillMount(){
     console.log('index will mount');
+
     if(!this.props.people || this.props.people.length < 0 || !Array.isArray(this.props.people)){
       console.log('index will mount shows no people list');
       this.props.getPage(this.state.currentRange.min,this.state.currentRange.max);
@@ -42,7 +44,19 @@ class PersonIndex extends Component {
 
   componentDidMount(){
     //console.log('index did mount');
+    if (this.props.people){
+      this.setState({
+        peopleList: this.props.people
+      })
+    }
+  }
 
+  componentWillReceiveProps(nextProps){
+    console.log('index results nextProps... ', nextProps.collapseAll);
+    console.log('index collapse prop ',this.props.collapseAll);
+    if (nextProps.collapseAll !== this.props.collapseAll){
+      this.generateList(this.state.peopleList);
+    }
   }
 
   componentWillUnmount(){
@@ -77,7 +91,7 @@ class PersonIndex extends Component {
       <div id={style.CSVload}>
         <div>
           <Grid>
-            {this.generateList(this.props.peopleList)}
+            {this.generateList(this.state.peopleList)}
           </Grid>
         </div>
 
