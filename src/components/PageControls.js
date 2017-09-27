@@ -5,7 +5,7 @@ import
 from 'react-bootstrap';
 import { Link, NavLink, Route } from 'react-router-dom';
 
-import { setRange, getPage, resetResults } from '../actions';
+import { setRange, getPage, resetResults, toggleAllRows } from '../actions';
 
 import style from '../sass/style.scss';
 
@@ -72,6 +72,13 @@ class PageControls extends Component {
               </Button>
               <Button onClick={()=>{this.onClick('max')}}>Next</Button>
             </ButtonGroup>
+
+            <ButtonGroup >
+              <Button onClick={()=>{this.props.toggleAllRows()}}>
+                Minimize/Maximize All
+              </Button>
+            </ButtonGroup>
+
           </ButtonToolbar>
         </Clearfix>
       </Panel>
@@ -89,4 +96,4 @@ function mapStateToProps(state,ownProps){
   }
 }
 
-export default connect(mapStateToProps,{setRange,getPage,resetResults})(PageControls)
+export default connect(mapStateToProps,{setRange,getPage,resetResults,toggleAllRows})(PageControls)

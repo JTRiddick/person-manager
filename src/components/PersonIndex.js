@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import  PageControls  from './PageControls';
 import  PersonDetail from './PersonDetail';
 
-import { getAll, getPage, resetResults, toggleAllRows } from '../actions';
+import { getAll, getPage, resetResults } from '../actions';
 
 import style from '../sass/style.scss';
 
@@ -49,9 +49,6 @@ class PersonIndex extends Component {
 
   }
 
-  handleCollapseAll(){
-    this.props.toggleAllRows();
-  }
 
   generateList(people){
     console.log('generating list ',people.length,people);
@@ -78,13 +75,6 @@ class PersonIndex extends Component {
 
     return (
       <div id={style.CSVload}>
-        <ButtonToolbar>
-          <ButtonGroup >
-            <Button onClick={()=>{this.props.toggleAllRows()}}>
-              Minimize/Maximize All
-            </Button>
-          </ButtonGroup>
-        </ButtonToolbar>
         <div>
           <Grid>
             {this.generateList(this.props.peopleList)}
@@ -107,4 +97,4 @@ function mapStateToProps(state,ownProps){
   };
 }
 
-export default connect(mapStateToProps,{getAll,getPage,resetResults,toggleAllRows})(PersonIndex)
+export default connect(mapStateToProps,{getAll,getPage,resetResults})(PersonIndex)
