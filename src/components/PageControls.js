@@ -74,9 +74,7 @@ class PageControls extends Component {
             </ButtonGroup>
 
             <ButtonGroup >
-              <Button onClick={()=>{this.props.toggleAllRows(()=>{
-                this.props.getPage(firstItem,lastItem);
-              })}}>
+              <Button onClick={()=>{this.props.toggleAllRows()}}>
                 Minimize/Maximize All
               </Button>
             </ButtonGroup>

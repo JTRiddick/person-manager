@@ -21,7 +21,7 @@ class PersonIndex extends Component {
     this.state = {
       loadError:true,
       currentRange:{min:0,max:9},
-      peopleList:[]
+      collapseAll:false
     };
   }
 
@@ -43,25 +43,23 @@ class PersonIndex extends Component {
   }
 
   componentDidMount(){
-    //console.log('index did mount');
-    if (this.props.people){
-      this.setState({
-        peopleList: this.props.people
-      })
-    }
+    this.setState({
+      collapseAll:this.props.collapseAll
+    })
   }
+
 
   componentWillReceiveProps(nextProps){
     console.log('index results nextProps... ', nextProps.collapseAll);
     console.log('index collapse prop ',this.props.collapseAll);
-    if (nextProps.collapseAll !== this.props.collapseAll){
-      this.generateList(this.state.peopleList);
+    if (nextProps.collapseAll !== this.state.collapseAll){
+      this.setState({
+        collapseAll: !this.state.collapseAll
+      })
     }
   }
 
-  componentWillUnmount(){
 
-  }
 
 
   generateList(people){
@@ -84,14 +82,14 @@ class PersonIndex extends Component {
 
 
   render() {
-    console.log('person index state at render ',this.state);
-    console.log('person index props @ render ',this.props);
+    // console.log('person index state at render ',this.state);
+    // console.log('person index props @ render ',this.props);
 
     return (
       <div id={style.CSVload}>
         <div>
           <Grid>
-            {this.generateList(this.state.peopleList)}
+            {this.generateList(this.props.peopleList)}
           </Grid>
         </div>
 
