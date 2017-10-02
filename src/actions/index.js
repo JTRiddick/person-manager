@@ -14,6 +14,7 @@ export const TOGGLE_SEARCH_FORM = 'TOGGLE_SEARCH_FORM';
 export const TOGGLE_COL = 'TOGGLE_COL';
 export const TOGGLE_PAGE_CONTROL = 'TOGGLE_PAGE_CONTROL';
 export const TOGGLE_ALL_ROWS = 'TOGGLE_ALL_ROWS';
+export const CHANGE_PAGE_SIZE = 'CHANGE_PAGE_SIZE';
 
 
 
@@ -44,6 +45,13 @@ export function toggleAllRows(cb=()=>{console.log('collapse/expand callback fire
   cb();
   return{
     type: TOGGLE_ALL_ROWS
+  }
+}
+
+export function changePageSize(num){
+  return{
+    type: CHANGE_PAGE_SIZE,
+    payload: num
   }
 }
 

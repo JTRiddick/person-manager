@@ -5,7 +5,8 @@ import {
   SORT_LIST,
   TOGGLE_ALL_ROWS,
   TOGGLE_PAGE_CONTROL,
-  TOGGLE_SEARCH_FORM
+  TOGGLE_SEARCH_FORM,
+  CHANGE_PAGE_SIZE
 } from '../actions';
 
 const initialState = {
@@ -28,6 +29,9 @@ const uiReducer = (state=initialState,action={}) => {
         firstItem:action.payload.min,
         lastItem:action.payload.max
       });
+    case CHANGE_PAGE_SIZE:
+      console.log('changing results per page ', action.payload);
+      return Object.assign({},state,{resultsPerPage: state.resultsPerPage + action.payload});
     case TOGGLE_PAGE_CONTROL:
       console.log('toggled page control');
       return {...state};

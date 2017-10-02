@@ -5,16 +5,12 @@ import
 from 'react-bootstrap';
 import { Link, NavLink, Route } from 'react-router-dom';
 
-import { setRange, getPage, resetResults, toggleAllRows } from '../actions';
+import { setRange, getPage, resetResults, toggleAllRows, changePageSize } from '../actions';
 
 import style from '../sass/style.scss';
 
 //this needs to do something else when we're on single view
 class PageControls extends Component {
-  constructor(){
-    super();
-
-  }
 
   componentWillMount(){
     this.setState({
@@ -35,15 +31,15 @@ class PageControls extends Component {
     switch (value) {
       case 'min':
         //lower page
-        let newMin = (min >= this.state.resultsPerPage) ? min - this.state.resultsPerPage : 0;
+        let newMin = (min >= this.props.resultsPerPage) ? min - this.props.resultsPerPage : 0;
         console.log('new min ',newMin);
         this.setState({
-          showing:[newMin,newMin+this.state.resultsPerPage],
+          showing:[newMin,newMin+this.props.resultsPerPage],
         })
-        this.props.setRange(newMin,newMin + this.state.resultsPerPage);
-        return this.props.getPage(newMin,newMin + this.state.resultsPerPage);
+        this.props.setRange(newMin,newMin + this.props.resultsPerPage);
+        return this.props.getPage(newMin,newMin + this.props.resultsPerPage);
       case 'max':
-        let newMax = max + this.state.resultsPerPage;
+        let newMax = max + this.props.resultsPerPage;
         console.log('new max ',newMax);
         this.setState({
           showing:[max,newMax],
@@ -77,6 +73,12 @@ class PageControls extends Component {
               <Button onClick={()=>{this.props.toggleAllRows()}}>
                 Minimize/Maximize All
               </Button>
+              <Button onClick={()=>{this.props.changePageSize(10)}}>
+                More Results
+              </Button>
+              <Button onClick={()=>{this.props.changePageSize(-10)}}>
+                Fewer Results
+              </Button>
             </ButtonGroup>
 
           </ButtonToolbar>
@@ -96,4 +98,4 @@ function mapStateToProps(state,ownProps){
   }
 }
 
-export default connect(mapStateToProps,{setRange,getPage,resetResults,toggleAllRows})(PageControls)
+export default connect(mapStateToProps,{setRange,getPage,resetResults,toggleAllRows,changePageSize})(PageControls)
