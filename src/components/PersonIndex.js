@@ -49,19 +49,6 @@ class PersonIndex extends Component {
   }
 
 
-  componentWillReceiveProps(nextProps){
-    console.log('index results nextProps... ', nextProps.collapseAll);
-    console.log('index collapse prop ',this.props.collapseAll);
-    if (nextProps.collapseAll !== this.state.collapseAll){
-      this.setState({
-        collapseAll: !this.state.collapseAll
-      })
-    }
-  }
-
-
-
-
   generateList(people){
     console.log('generating list ',people.length,people);
     if (people === []) {

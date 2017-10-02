@@ -14,6 +14,7 @@ class PersonDetail extends Component{
     console.log('PersonDetail props ', props);
 
     this.state = {
+      collaseAll:false,
       rowStatus:'hidden-row',
       secret:'hidden'
     }
@@ -22,9 +23,23 @@ class PersonDetail extends Component{
   componentWillMount(){
       console.log('toggled? ', this.props.collapseAll)
       this.setState({
+        collapseAll: this.props.collapseAll,
         rowStatus: this.props.collapseAll ? 'hidden-row' : 'main-row'
       })
   }
+
+    //moved from person index, detail components werent using new props
+    //from index rerender triggered by collapseAll button state change
+    componentWillReceiveProps(nextProps){
+      console.log('index results nextProps... ', nextProps.collapseAll);
+      console.log('index collapse prop ',this.props.collapseAll);
+      if (nextProps.collapseAll !== this.state.collapseAll){
+        this.setState({
+          collapseAll: nextProps.collaseAll,
+          rowStatus: nextProps.collapseAll ? 'hidden-row' : 'main-row'
+        })
+      }
+    }
 
   toggleRow(){
     (this.state.rowStatus == 'main-row') ?
