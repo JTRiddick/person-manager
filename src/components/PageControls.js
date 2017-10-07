@@ -48,6 +48,18 @@ class PageControls extends Component {
         return this.props.getPage(max,newMax);
       case 'back':
         return this.props.resetResults(()=>{this.props.history.push('/')});
+      case 'more':
+        this.setState({
+          resultsPerPage: this.state.resultsPerPage+10
+        })
+        return this.props.changePageSize(10);
+      case 'less':
+        if(this.state.resultsPerPage > 10){
+          this.setState({
+            resultsPerPage: this.state.resultsPerPage-10
+          })
+          return this.props.changePageSize(-10);
+        }
       default:
         break;
     }
@@ -62,7 +74,7 @@ class PageControls extends Component {
         <Clearfix>
           <ButtonToolbar>
             <ButtonGroup>
-              <Button onClick={()=>{this.onClick('min')}}>Previous</Button>
+              <Button onClick={()=>{this.onClick('min')}}>Previous </Button>
               <Button onClick={()=>{this.onClick(/*'back'*/)}}>
                 Showing: {firstItem} - {lastItem}
               </Button>
@@ -73,10 +85,10 @@ class PageControls extends Component {
               <Button onClick={()=>{this.props.toggleAllRows()}}>
                 Minimize/Maximize All
               </Button>
-              <Button onClick={()=>{this.props.changePageSize(10)}}>
+              <Button onClick={()=>{this.onClick('more')}}>
                 More Results
               </Button>
-              <Button onClick={()=>{this.props.changePageSize(-10)}}>
+              <Button d onClick={()=>{this.onClick('less')}}>
                 Fewer Results
               </Button>
             </ButtonGroup>

@@ -21,8 +21,19 @@
     float: right;
     clear: none; }
 
-.contact-detail {
-  padding-top: 0.75em; }
-
-.location-detail p {
-  line-height: 0.5; }
+div.main-row.row div.row-detail {
+  margin-right: auto;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-content: center;
+  align-content: center;
+  background-color: Silver; }
+  div.main-row.row div.row-detail .location-detail p {
+    line-height: 0.5; }
+  div.main-row.row div.row-detail .name-detail {
+    -webkit-order: -1;
+    order: -1; }
+  div.main-row.row div.row-detail .contact-detail {
+    padding-top: 0.75em; }
