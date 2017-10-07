@@ -45,9 +45,10 @@
       flex-wrap: wrap;
       -webkit-align-content: center;
       align-content: center;
-      background-color: Silver;
+      background-color: #eee;
 
       .location-detail{
+        flex:1;
         p{
           line-height: 0.5;
         }
@@ -55,15 +56,25 @@
 
       .name-detail{
         -webkit-order: -1;
-        order: -1
+        order: -1;
+        align-self:flex-start;
+        flex:1;
       }
 
       .contact-detail{
+        flex:1;
         padding-top:0.75em;
       }
 
     }
 
+  }
+
+}
+:local{
+  #CSVload{
+    background-color: silver;
+    z-index: -9999;
   }
 
 }

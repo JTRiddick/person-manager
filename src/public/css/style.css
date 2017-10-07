@@ -29,11 +29,20 @@ div.main-row.row div.row-detail {
   flex-wrap: wrap;
   -webkit-align-content: center;
   align-content: center;
-  background-color: Silver; }
-  div.main-row.row div.row-detail .location-detail p {
-    line-height: 0.5; }
+  background-color: #eee; }
+  div.main-row.row div.row-detail .location-detail {
+    flex: 1; }
+    div.main-row.row div.row-detail .location-detail p {
+      line-height: 0.5; }
   div.main-row.row div.row-detail .name-detail {
     -webkit-order: -1;
-    order: -1; }
+    order: -1;
+    align-self: flex-start;
+    flex: 1; }
   div.main-row.row div.row-detail .contact-detail {
+    flex: 1;
     padding-top: 0.75em; }
+
+#style__CSVload___3wWH2 {
+  background-color: silver;
+  z-index: -9999; }
