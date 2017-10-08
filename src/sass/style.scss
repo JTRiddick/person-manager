@@ -46,6 +46,7 @@
       -webkit-align-content: center;
       align-content: center;
       background-color: #eee;
+      padding-left:1em;
 
       .location-detail{
         flex:1;
@@ -70,11 +71,17 @@
 
   }
 
+  div.row-detail:nth-child(even){
+    background-color:silver;
+  }
+
+
 }
 :local{
   #CSVload{
     background-color: silver;
     z-index: -9999;
+
   }
 
 }

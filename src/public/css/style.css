@@ -29,7 +29,8 @@ div.main-row.row div.row-detail {
   flex-wrap: wrap;
   -webkit-align-content: center;
   align-content: center;
-  background-color: #eee; }
+  background-color: #eee;
+  padding-left: 1em; }
   div.main-row.row div.row-detail .location-detail {
     flex: 1; }
     div.main-row.row div.row-detail .location-detail p {
@@ -42,6 +43,9 @@ div.main-row.row div.row-detail {
   div.main-row.row div.row-detail .contact-detail {
     flex: 1;
     padding-top: 0.75em; }
+
+div.row-detail:nth-child(even) {
+  background-color: silver; }
 
 #style__CSVload___3wWH2 {
   background-color: silver;

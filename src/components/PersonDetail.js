@@ -81,7 +81,7 @@ class PersonDetail extends Component{
 
 const Name = props => {
   return(
-    <Col md={4} className={props.status}>
+    <div className={props.status}>
       <div>
         <h4>
           {props.person['First Name']}
@@ -91,23 +91,23 @@ const Name = props => {
           {props.person['Job']}
         </h4>
       </div>
-    </Col>
+    </div>
   )
 }
 
 const Contact = props => {
 
   return(
-    <Col md={4} className={props.status}>
+    <div className={props.status}>
       <p>Email: {props.person['Email']}</p>
       <p>C Number: {props.person['C_Number']}</p>
-    </Col>
+    </div>
   )
 }
 
 const Location = props => {
   return(
-    <Col md={4} className={props.status}>
+    <div md={4} className={props.status}>
       <h4>Home Address:</h4>
       <p>
         {props.person['Address']}
@@ -118,7 +118,7 @@ const Location = props => {
       <p>
         {props.person['State']}
       </p>
-    </Col>
+    </div>
   )
 }
 
