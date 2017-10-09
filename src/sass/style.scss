@@ -8,90 +8,97 @@
   .index-header{
 
   }
-  .main-row{
-    outline: 2px solid darkgray;
-    padding:0 0 4px 0;
-    margin-bottom:2px;
-  }
-  .hidden-row{
-    outline: 2px solid darkgray;
-    .row-detail{
-      display: none;
-    }
-  }
-  .column-header{
-    background-color: #1A5276;
-    padding:6px 3px 9px 6px;
-    a,a:visited,a:hover,a:active{
-      color: #F7F9F9;
-      padding-left: 2px;
-    }
-    button{
-      float:right;
-      clear:none;
-    }
-  }
-
-
-
-  .main-row.row{
-
-    .row-detail{
-
-      margin-right:auto;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-wrap: wrap;
-      flex-wrap: wrap;
-      -webkit-align-content: center;
-      align-content: center;
-      padding-left:1em;
-
-      .location-detail{
-        flex:1;
-        p{
-          line-height: 0.5;
-        }
-      }
-
-      .name-detail{
-        -webkit-order: -1;
-        order: -1;
-        align-self:flex-start;
-        flex:1;
-      }
-
-      .contact-detail{
-        flex:1;
-        p{
-          line-height: 0.5;
-        }
-      }
-
-    }
-
-  }
 
 
 }
+
 :local{
   #CSVload{
     // background-color: silver;
     z-index: -9999;
 
+    .main-row{
+      outline: 2px solid darkgray;
+      margin-bottom:2px;
+      :first-child{
+        padding-bottom: 1em;
+      }
+    }
+    .hidden-row{
+      outline: 2px solid darkgray;
+      .row-detail{
+        display: none;
+      }
+    }
+    .column-header{
+      background-color: #1A5276;
+      padding:6px 3px 9px 6px;
+      a,a:visited,a:hover,a:active{
+        color: #F7F9F9;
+        padding-left: 2px;
+      }
+      button{
+        float:right;
+        clear:none;
+      }
+    }
+
     .detailContainer{
-      :nth-child(even){
+
+      .main-row{
+
         .row-detail{
+
+          margin-right:auto;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+          -webkit-align-content: center;
+          align-content: center;
+          padding-left:1em;
+
+          .location-detail{
+            flex:1;
+            p{
+              line-height: 0.5;
+            }
+          }
+
+          .name-detail{
+            -webkit-order: -1;
+            order: -1;
+            align-self:flex-start;
+            flex:1;
+          }
+
+          .contact-detail{
+            flex:1;
+            p{
+              line-height: 0.5;
+            }
+          }
+
+        }
+
+      }
+
+      :nth-child(even){
+        div.row-detail{
           background-color:silver;
+
         }
 
       }
       :nth-child(odd){
-        .row-detail{
+        div.row-detail{
           background-color:#eee;
+
         }
 
       }
+
+
     }
 
   }

@@ -24,7 +24,7 @@ class PersonDetail extends Component{
       console.log('toggled? ', this.props.collapseAll)
       this.setState({
         collapseAll: this.props.collapseAll,
-        rowStatus: this.props.collapseAll ? 'hidden-row' : 'main-row'
+        rowStatus: this.props.collapseAll ? style['hidden-row'] : style['main-row']
       })
   }
 
@@ -36,7 +36,7 @@ class PersonDetail extends Component{
       if (nextProps.collapseAll !== this.state.collapseAll){
         this.setState({
           collapseAll: nextProps.collaseAll,
-          rowStatus: nextProps.collapseAll ? 'hidden-row' : 'main-row'
+          rowStatus: nextProps.collapseAll ? style['hidden-row'] : style['main-row']
         })
       }
     }
@@ -58,18 +58,19 @@ class PersonDetail extends Component{
     }else{
       return(
         <Row className={`${this.state.rowStatus}`} key={person.ID}>
-          <div className="column-header">
+          <div className= {style["column-header"]}>
             <Link to={`/show/${person.ID}`}>
               {person['Last Name']}, {person['First Name']} ID: {person['ID']}
             </Link>
             <Button onClick={()=>this.toggleRow()} bsSize="xs">
-              <Glyphicon glyph={(this.state.rowStatus == 'main-row')?"minus":"plus"}/>
+              <Glyphicon glyph={(this.state.rowStatus == style['main-row'])?"minus":"plus"}/>
             </Button>
           </div>
-          <div className="row-detail">
-            <Name person={person} status={[...this.props.showColumns].includes("name-detail") ? 'name-detail' : 'hidden'}/>
-            <Contact person={person} status={[...this.props.showColumns].includes("contact-detail") ? 'contact-detail' : 'hidden'}/>
-            <Location person={person} status={[...this.props.showColumns].includes("location-detail") ? 'location-detail' : 'hidden'}/>
+          <div className={style['row-detail']}>
+            <Name person={person} status={[...this.props.showColumns].includes("name-detail") ? style['name-detail']: style['hidden']}/>
+            <Contact person={person} status={[...this.props.showColumns].includes("contact-detail") ? style['contact-detail'] : style['hidden']}/>
+            <Location person={person}
+              status={[...this.props.showColumns].includes("location-detail") ? style['location-detail'] : style['hidden']}/>
             <Secret person={person} status={this.state.secret}/>
           </div>
         </Row>
