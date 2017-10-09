@@ -74,11 +74,10 @@ class PersonIndex extends Component {
 
     return (
       <div id={style.CSVload}>
-        <div>
-          <Grid>
-            {this.generateList(this.props.peopleList)}
-          </Grid>
-        </div>
+
+        <Grid className={style.detailContainer}>
+          {this.generateList(this.props.peopleList)}
+        </Grid>
 
       </div>
     );

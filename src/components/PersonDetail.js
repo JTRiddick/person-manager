@@ -99,6 +99,7 @@ const Contact = props => {
 
   return(
     <div className={props.status}>
+      <h4>Contact Information:</h4>
       <p>Email: {props.person['Email']}</p>
       <p>C Number: {props.person['C_Number']}</p>
     </div>
@@ -107,7 +108,7 @@ const Contact = props => {
 
 const Location = props => {
   return(
-    <div md={4} className={props.status}>
+    <div className={props.status}>
       <h4>Home Address:</h4>
       <p>
         {props.person['Address']}
