@@ -23,11 +23,19 @@
       clear: none; }
   #style__CSVload___3wWH2 .style__detailContainer___1KVjE .style__main-row___2f_xb .style__row-detail___Morri {
     margin-right: auto;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
+    -webkit-box-flex: wrap;
+    -moz-box-flex: wrap;
+    -webkit-flex: wrap;
+    -ms-flex: wrap;
+    flex: wrap;
     -webkit-align-content: center;
+    -moz-align-content: center;
+    -ms-align-content: center;
     align-content: center;
     padding-left: 1em; }
     #style__CSVload___3wWH2 .style__detailContainer___1KVjE .style__main-row___2f_xb .style__row-detail___Morri .style__location-detail___1w1mo {
