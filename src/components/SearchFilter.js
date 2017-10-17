@@ -16,7 +16,7 @@ class SearchFilter extends Component {
     this.state =  {
       searchVal:'',
       allowSearch:false,
-      searchType:'single'
+      searchType:'Single'
     }
   }
 
@@ -48,16 +48,16 @@ class SearchFilter extends Component {
     e.preventDefault();
     if(this.state.allowSearch){
       switch (this.state.searchType) {
-        case 'single':
-          this.props.searchList(this.state.searchTerm,()=>{this.props.history.push('/show')});
-        case 'filter':
-          this.props.filterList(this.state.searchTerm,()=>{})
+        case 'Single':
+          return this.props.searchList(this.state.searchTerm,()=>{this.props.history.push('/show')});
+        case 'Filter':
+          return this.props.filterList(this.state.searchTerm,()=>{})
         default:
         return console.log('notice: not going to search');
       }
 
     }else{
-      return console.log('notice: not going to search');
+      return console.log('bad validationState: not going to search');
     }
 
   }
@@ -92,7 +92,7 @@ class SearchFilter extends Component {
 
 function mapStateToProps(state,ownProps){
   return{
-
+    peopleList:state.people
   }
 }
 

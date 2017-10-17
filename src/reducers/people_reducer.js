@@ -8,10 +8,13 @@ import {GET_MASTER_LIST,
 } from '../actions';
 
 export default function(state = {},action){
+
   switch(action.type){
+
     case GET_MASTER_LIST:
       const people = _.mapKeys(action.payload,'ID');
       return Object.assign({},state,people);
+
     case GET_PAGED_LIST:
       //use reducer to take a range of rows from JSON data
       //displaying whole list at once slows browser considerably
@@ -39,9 +42,22 @@ export default function(state = {},action){
       })
       return Object.assign({},{[0]:searchedList[0]});
     case FILTER_LIST:
-      const filteredList = _.filter(action.payload.csv,(item)=>{
-        return _.includes(item,action.payload.term)
-      })
+      const peopleArray = _.reduce(action.payload.csv,(res,val)=>{
+        res.push(val);
+        return res;
+      },[])
+      // console.log('typeof data..', Array.isArray(data));
+    
+      const filterList = (data, term) => {
+        return _.filter(data, _.flow(
+          _.identity,
+          _.values,
+          _.join,
+          _.toLower,
+          _.partialRight(_.includes, term)
+        ));
+      }
+      const filteredList = filterList(peopleArray, action.payload.term);
       return Object.assign({},filteredList);
     case RESET_RESULTS:
       return [];
