@@ -55,8 +55,12 @@ export function changePageSize(num){
   }
 }
 
-export function filterList(attributes){
-
+export function filterList(term,cb=()=>{console.log('filter callback fired')}){
+  cb();
+  return{
+    type: FILTER_LIST,
+    payload:{csv,term}
+  }
 }
 
 export function searchList(term,cb=()=>{console.log('search callback fired')}){

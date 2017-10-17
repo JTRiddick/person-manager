@@ -39,7 +39,10 @@ export default function(state = {},action){
       })
       return Object.assign({},{[0]:searchedList[0]});
     case FILTER_LIST:
-      return ([]);
+      const filteredList = _.filter(action.payload.csv,(item)=>{
+        return _.includes(item,action.payload.term)
+      })
+      return Object.assign({},filteredList);
     case RESET_RESULTS:
       return [];
     default:

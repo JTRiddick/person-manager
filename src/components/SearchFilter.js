@@ -6,7 +6,7 @@ import
 from 'react-bootstrap';
 import { Link, NavLink, Route } from 'react-router-dom';
 
-import { searchList,resetResults } from '../actions';
+import { searchList,resetResults,filterList } from '../actions';
 
 import style from '../sass/style.scss';
 
@@ -15,7 +15,8 @@ class SearchFilter extends Component {
     super(props);
     this.state =  {
       searchVal:'',
-      allowSearch:false
+      allowSearch:false,
+      searchType:'single'
     }
   }
 
@@ -37,12 +38,26 @@ class SearchFilter extends Component {
     }
   }
 
+  switchFilter(e){
+    this.setState({
+      searchType: (this.state.searchType === 'Single') ? 'Filter' : 'Single'
+    })
+  }
+
   performSearch(e){
     e.preventDefault();
     if(this.state.allowSearch){
-      this.props.searchList(this.state.searchTerm,()=>{this.props.history.push('/show')});
+      switch (this.state.searchType) {
+        case 'single':
+          this.props.searchList(this.state.searchTerm,()=>{this.props.history.push('/show')});
+        case 'filter':
+          this.props.filterList(this.state.searchTerm,()=>{})
+        default:
+        return console.log('notice: not going to search');
+      }
+
     }else{
-      console.log('notice: not going to search');
+      return console.log('notice: not going to search');
     }
 
   }
@@ -68,6 +83,7 @@ class SearchFilter extends Component {
           </FormGroup>
         </form>
         <Button onClick={(e)=>this.performSearch(e)}>Search</Button>
+        <Button onClick={(e)=>this.switchFilter(e)}>{`Toggle ${this.state.searchType}`}</Button>
       </Panel>
     )
   }
@@ -80,4 +96,4 @@ function mapStateToProps(state,ownProps){
   }
 }
 
-export default connect(mapStateToProps,{searchList,resetResults})(SearchFilter)
+export default connect(mapStateToProps,{searchList,resetResults,filterList})(SearchFilter)
