@@ -51,20 +51,22 @@ class PersonIndex extends Component {
 
   generateList(people){
     console.log('generating list ',people.length,people);
-    if (people === []) {
-      this.setState({loadError:true})
-      this.resetResults();
-    return (<div className={`container ${style.denied}`}>
-      <Panel header="There's a Problem!" bsStyle="danger">
-        <p>No People Found</p>
-      </Panel>
-    </div>)
+    let generatedList;
+    if (!people.length) {
+      console.log('no people');
+      generatedList = (<div className={`container ${style.denied}`}>
+        <Panel header="There's a Problem!" bsStyle="danger">
+          <p>No People Found</p>
+        </Panel>
+      </div>)
   }else{
-    return _.map(people, person => {
+    console.log('mapping people')
+    generatedList = _.map(people, person => {
       return(
         <PersonDetail person={person}  key={person['ID']} />
       )});
     }
+    return generatedList;
   }
 
 
