@@ -16,7 +16,7 @@ class SearchFilter extends Component {
     this.state =  {
       searchVal:'',
       allowSearch:false,
-      searchType:'Single'
+      searchType:'Filter'
     }
   }
 
@@ -64,6 +64,7 @@ class SearchFilter extends Component {
 
   render(){
     console.log(this.state);
+    let searchType = (this.state.searchType === 'Single') ? 'Individual' : 'Keyword';
     return(
       <Panel>
         <form>
@@ -72,7 +73,7 @@ class SearchFilter extends Component {
             validationState={this.getValidationState()}
             onSubmit={(e)=>this.performSearch(e)}
           >
-            <ControlLabel>Search for a Person</ControlLabel>
+            <ControlLabel>Search by {searchType}</ControlLabel>
             <FormControl
               type="text"
               value={this.state.searchVal}
@@ -83,7 +84,7 @@ class SearchFilter extends Component {
           </FormGroup>
         </form>
         <Button onClick={(e)=>this.performSearch(e)}>Search</Button>
-        <Button onClick={(e)=>this.switchFilter(e)}>{`Toggle ${this.state.searchType}`}</Button>
+        <Button onClick={(e)=>this.switchFilter(e)}>{`Toggle Search Type: ${searchType}`}</Button>
       </Panel>
     )
   }
