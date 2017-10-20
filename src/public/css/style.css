@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);.app-container {
+@import url(https://fonts.googleapis.com/css?family=Roboto);@import url(https://fonts.googleapis.com/css?family=Roboto);.app-container {
   font-family: 'Roboto',sans-serif; }
 
 #style__CSVload___3wWH2 {
@@ -55,3 +55,25 @@
     background-color: silver; }
   #style__CSVload___3wWH2 .style__detailContainer___1KVjE :nth-child(odd) div.style__row-detail___Morri {
     background-color: #eee; }
+#singleViewStyle__singleview___3IkbZ {
+  border: 2px solid #3399FF;
+  padding: 16px;
+  margin: 0 auto; }
+
+.singleViewStyle__name___1fmx5 {
+  color: white;
+  background-color: #3333CC;
+  padding: 1em; }
+  .singleViewStyle__name___1fmx5 :first-child {
+    font-weight: 800; }
+
+.singleViewStyle__contact___2UZMh {
+  background-color: #999900;
+  color: #3333CC;
+  padding: 1em; }
+
+.singleViewStyle__location___2djjQ {
+  color: white;
+  background-color: #3333CC;
+  padding: 1em;
+  margin: 0 auto; }

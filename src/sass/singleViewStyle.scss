@@ -1,0 +1,34 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import "mixins.scss";
+
+#singleview{
+
+  border: 2px solid #3399FF;
+  padding: 16px;
+  margin: 0 auto;
+
+}
+
+.name{
+  color: white;
+  background-color: #3333CC;
+  padding: 1em;
+
+  :first-child{
+    font-weight:800;
+  }
+}
+
+.contact{
+  background-color: #999900;
+  color: #00FFFF;
+  padding: 1em;
+}
+
+.location{
+
+ color:white;
+ background-color:#3333CC;
+ padding:1em;
+ margin:0 auto;
+}

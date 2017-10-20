@@ -5,7 +5,7 @@ import
   {Panel,Clearfix,ButtonToolbar,ButtonGroup,Button} from 'react-bootstrap';
 import { getOne, resetResults } from '../actions';
 
-import style from '../sass/style.scss';
+import style from '../sass/singleViewStyle.scss';
 
 
 class SingleView extends Component{
@@ -36,7 +36,7 @@ class SingleView extends Component{
       return (
         <Panel id={style.singleview}>
           <h4>{person['ID']}</h4>
-          <div>
+          <div className={style.name}>
             <h3>
               <b>{person['First Name']} {person['Last Name']}</b>
             </h3>
@@ -44,11 +44,11 @@ class SingleView extends Component{
               {person['Job']}
             </h4>
           </div>
-          <div>
+          <div className={style.contact}>
             <p>{person['Email']}</p>
             <p>{person['C_Number']}</p>
           </div>
-          <div>
+          <div className={style.location}>
             <p>
               {person['Address']}
             </p>
